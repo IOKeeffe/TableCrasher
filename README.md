@@ -1,2 +1,0 @@
-# TableCrasher
-Inspired by OpenTable
