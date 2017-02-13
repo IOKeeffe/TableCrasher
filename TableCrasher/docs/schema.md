@@ -8,6 +8,7 @@ username        | string    | not null, indexed, unique
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 
+
 ## cities
 column names    | data type | details
 ----------------|-----------|----------------------
@@ -27,7 +28,6 @@ zip_code          | string    | not null
 category          | string    | not null
 description       | string    | not null
 image_url         | string    | not null
-detail_image_urls | string    | default: [], null: false, array: true
 price             | integer   | not null
 city_id           | integer   | not null, foreign key (references cities), indexed
 owner_id          | integer   | not null, foreign key (references users), indexed
@@ -55,3 +55,9 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 user_id         | integer   | not null, foreign key (references users), indexed
 restaurant_id   | integer   | not null, foreign key (references restaurants), indexed
+
+## images
+column name     | data type | details
+----------------|-----------|-----------------------
+url             | string    | not null
+restaurant_id   | integer   | not null, foreign key(references restaurants), indexed
