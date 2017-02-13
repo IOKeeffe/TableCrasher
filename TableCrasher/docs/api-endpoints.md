@@ -36,11 +36,11 @@
 - `DELETE /api/restaurants/:id/review`
 
 ## Reservations
-- `GET /api/restaurants/:id/reservations`
-  - index of all reservations for the restaurant
-- `POST /api/restaurants/:id/reservations`
+- `GET /api/users/:id/reservations`
+  - index of all reservations for the user
+- `POST /api/users/:id/reservations`
 
 ## Favorites
-- `GET /api/restaurants/:id/favorites`
-  - index of all favorites for the restaurant
-- `DELETE /api/restaurants/:id/favorites`
+- `GET /api/users/:id/favorites`
+  - index of all favorites for the user
+- `DELETE /api/users/:id/favorites`
