@@ -1,6 +1,7 @@
 # Schema Information
 
 ## users
+has many: restaurants, reservations, favorites, reviews
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
@@ -17,6 +18,8 @@ name            | string    | not null
 image_url       | string    | not null
 
 ## restaurants
+belongs to: user, city
+has many: reservations, reviews, favorites, images
 column name       | data type | details
 ------------------|-----------|-----------------------
 id                | integer   | not null, primary key
@@ -33,6 +36,7 @@ city_id           | integer   | not null, foreign key (references cities), index
 owner_id          | integer   | not null, foreign key (references users), indexed
 
 ## reservations
+belongs to: user, restaurant
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
@@ -42,6 +46,7 @@ user_id         | integer   | not null, foreign key (references users), indexed
 restaurant_id   | integer   | not null, foreign key (references restaurants), indexed
 
 ## reviews
+belongs to: user, restaurant
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
@@ -51,12 +56,14 @@ user_id         | integer   | not null, foreign key (references users), indexed
 restaurant_id   | integer   | not null, foreign key (references restaurants), indexed
 
 ## favorites
+belongs to: user, restaurant
 column name     | data type | details
 ----------------|-----------|-----------------------
 user_id         | integer   | not null, foreign key (references users), indexed
 restaurant_id   | integer   | not null, foreign key (references restaurants), indexed
 
 ## images
+belongs to: restaurant
 column name     | data type | details
 ----------------|-----------|-----------------------
 url             | string    | not null
