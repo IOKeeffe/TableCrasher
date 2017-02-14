@@ -1,9 +1,11 @@
 ``` js
 {
-  currentUser: {
-    id: 1,
-    username: 'cooldude2'
-  },
+  session: currentUser: {
+      id: 1,
+      username: 'cooldude2'
+    },
+    errors: []
+  }
   forms: {
     signUp: { errors: [] },
     logIn: { errors: [] },
