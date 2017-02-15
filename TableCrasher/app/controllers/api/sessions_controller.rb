@@ -5,16 +5,19 @@ class Api::SessionsController < ApplicationController
       log_in(@user)
       render "api/users/show"
     else
-      render json: {base: ["Invalid Username/Password"], status: 422}
+      render json: "Invalid Username/Password", status: 422
     end
   end
 
   def destroy
     if(logged_in?)
       log_out
-      render json: {}
+      render(json: {})
     else
-      render json: {base: ["Not logged in."], status: 404}
+      render(json: "Not logged in.", status: 404 )
     end
+  end
+  def user_params
+    params.require(:user).permit(:username, :password, :email_address, :f_name, :l_name)
   end
 end

@@ -8,17 +8,19 @@ import SignUpFormContainer from './user/signup_form_container';
 const Root = ({store}) => (
     <Provider store={store}>
       <Router history = { hashHistory }>
-        <Route path="/" component={ App } />
-        <Route path="/signup" component={ SignUpFormContainer } onEnter= {userCheck}/>
-        <Route path="/login" component={ LogInFormContainer } onEnter= {userCheck}/>
+        <Route path="/" component={ App }>
+          <Route path="/signup" component={ SignUpFormContainer } onEnter= {userCheck(store)}/>
+          <Route path="/login" component={ LogInFormContainer } onEnter= {userCheck(store)}/>
+        </Route>
       </Router>
     </Provider>
-)
+);
 
-const userCheck = (nextState, replace) => {
+const userCheck = (store) => (nextState, replace) => {
   if(store.getState().session.currentUser) {
     replace("/");
   }
-}
+};
 
-export default Root
+
+export default Root;

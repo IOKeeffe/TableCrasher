@@ -1,11 +1,11 @@
 import React from 'react';
-import HeaderContainer from './header/header'
+import HeaderContainer from './header/header_container';
 
-const App = ({ children }) => (
+const App = (props) => { return (
   <div>
     <h1>Table Crasher</h1>
     <HeaderContainer />
-    { children }
+    { props.children }
   </div>
-)
+);};
 export default App;
