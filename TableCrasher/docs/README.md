@@ -1,8 +1,8 @@
 # TableCrasher
 
-[Heroku link][heroku]
+[Heroku link](https://table-crasher.herokuapp.com/)
 
-[Trello link][trello]
+[Trello link](https://trello.com/b/XZhuNIJM/tablecrasher)
 
 
 
