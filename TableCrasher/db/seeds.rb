@@ -8,6 +8,15 @@
 
 User.delete_all
 
+User.create(
+  username: "guest",
+  password: "starwars",
+  session_token: Faker::Crypto.md5,
+  f_name: "Guest",
+  l_name: "Guest",
+  email_address: "guest@guest.com"
+)
+
 20.times do
   uname = Faker::GameOfThrones.character
   until(uname.split.length == 2) do
