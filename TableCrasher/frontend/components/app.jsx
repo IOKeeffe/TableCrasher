@@ -2,8 +2,7 @@ import React from 'react';
 import HeaderContainer from './header/header_container';
 
 const App = (props) => { return (
-  <div>
-    <h1>Table Crasher</h1>
+  <div id="home-div" className="modal-container">
     <HeaderContainer />
     { props.children }
   </div>
