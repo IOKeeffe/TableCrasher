@@ -21,6 +21,7 @@
 
 ### Cities
 - `GET /api/cities`
+- `GET /api/cities/:id`
 
 ### Restaurants
 
