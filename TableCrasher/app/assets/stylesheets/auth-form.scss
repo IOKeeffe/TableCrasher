@@ -35,7 +35,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    font-family: $sans-serif;
+    font-family: $source-sans;
     font-weight: normal;
     justify-content: center;
 
@@ -69,7 +69,7 @@
 
   .auth-footer {
     align-self: flex-start;
-    font-family: $sans-serif;
+    font-family: $source-sans;
     padding: 15px 0 0;
     a {
       color: $red;

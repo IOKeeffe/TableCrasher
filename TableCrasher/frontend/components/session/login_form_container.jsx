@@ -1,8 +1,8 @@
-import { logIn, receiveErrors, } from '../../actions/session_actions';
-import { connect, } from 'react-redux';
+import { logIn, receiveErrors } from '../../actions/session_actions';
+import { connect } from 'react-redux';
 import LoginForm from './login_form';
 
-const mapStateToProps = ({ session, }) => {
+const mapStateToProps = ({ session }) => {
   return {
     errors: session.errors,
     loggedIn: Boolean(session.currentUser),

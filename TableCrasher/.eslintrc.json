@@ -25,7 +25,7 @@
             "error",
             "unix"
         ],
-        "no-unused-vars": ["error", { "args": "none" }],
+        "no-unused-vars": [0, { "args": "none" }],
         "semi": [
             "error",
             "always"
