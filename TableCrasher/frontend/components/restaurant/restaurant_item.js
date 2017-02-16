@@ -10,8 +10,8 @@ export default ({restaurant}) => {
   return (
   <li className="restaurant-item" onClick={(e) => redirect(e.currentTarget.id)}>
     <img src={restaurant.image_url} alt={restaurant.name}/>
-    <h3>{restaurant.name}</h3>
-    <h3>{restaurant.category}</h3>
+    <h2>{restaurant.name}</h2>
+    <h2 className="category">{restaurant.category}</h2>
   </li>
   );
 };

@@ -3,6 +3,8 @@ import React from 'react';
 
 export default () => (
   <div className="main-page">
-    <RestaurantIndexContainer />
+    <div className="content-holder">
+      <RestaurantIndexContainer />
+    </div>
   </div>
 );
