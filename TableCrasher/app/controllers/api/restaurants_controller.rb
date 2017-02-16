@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+class Api::RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
@@ -15,11 +15,12 @@ class Api::UsersController < ApplicationController
   end
 
   def index
+    @restaurants = Restaurant.all
     render :index
   end
 
   def show
-    @restaurant = current_user
+    @restaurant = Restaurant.find_by(id: params[:id])
   end
 
   def update
@@ -31,21 +32,28 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @restaurant = Restaurant.find_by(id: params[:id])
+    @restaurant.delete
+    @restaurants = Restaurant.all
+    render :index
+  end
+
   def edit
 
   end
 
   private def restaurant_params
     params.require(:restaurant).permit(
-    :name,
-    :address,
-    :state,
-    :zip_code,
-    :category,
-    :description,
-    :image_url,
-    :price
-    :city_id
+      :name,
+      :address,
+      :state,
+      :zip_code,
+      :category,
+      :description,
+      :image_url,
+      :price,
+      :city_id
     )
   end
 
