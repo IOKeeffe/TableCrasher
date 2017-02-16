@@ -76,11 +76,11 @@ export default class SignUpForm extends React.Component {
         show={true}
         onHide={this.hideModal}
         dialogClassName="custom-modal">
-        { this.renderErrors(this.props.errors) }
         <Modal.Header>
           <Modal.Title>Welcome to Table Crasher!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        { this.renderErrors(this.props.errors) }
           <form className="sign-up-form" onSubmit={this.handleSubmit}>
             <br />
               <input type="text"
@@ -89,14 +89,14 @@ export default class SignUpForm extends React.Component {
                 onChange={this.handleChange('username')}/>
             <br />
               <input
-              type="text"
+              type="password"
               value={this.state.password}
                 placeholder="Enter Password *"
               onChange={this.handleChange('password')}/>
             <br />
               <input type="password"
               value={this.state.passwordVer}
-              placeholder="Re-Enter Username *"
+              placeholder="Re-Enter Password *"
               onChange={this.handleChange('passwordVer')}/>
              <br />
               <input type="text"
