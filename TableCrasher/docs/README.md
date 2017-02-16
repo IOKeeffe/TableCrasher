@@ -55,7 +55,7 @@ buttons.
 * Details page will have Reservation form.
 * Details page has option to favorite.
 
-### Phase 4: Reservations (2 day)
+### Phase 4: Reservations (2 days)
 
 **Objective:** Users can search by time slots or restaurant location and book reservations.
 * Reservation form will include number of people, date, and time.
