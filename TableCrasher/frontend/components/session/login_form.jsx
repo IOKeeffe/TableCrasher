@@ -11,6 +11,7 @@ export default class LoginForm extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   componentDidUpdate() {
@@ -36,17 +37,20 @@ export default class LoginForm extends React.Component {
   }
 
   hideModal() {
-    hashHistory.push('/')
+    this.props.receiveErrors([]);
+    hashHistory.push('/');
   }
 
   renderErrors(errors) {
-    return (
-      <ul>
-        {errors.map((error, i) => (
-          <li className="error" key={i}>{error.responseText}</li>
-        ))}
-      </ul>
-    );
+    if(errors.responseJSON){
+      return (
+        <ul>
+          {errors.responseJSON.map((error, i) => (
+            <li className="error" key={i}>{error}</li>
+          ))}
+        </ul>
+      );
+    }
   }
 
 
