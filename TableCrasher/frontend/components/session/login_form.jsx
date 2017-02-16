@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, hashHistory, } from 'react-router';
+import { Link, hashHistory } from 'react-router';
+import { Modal } from 'react-bootstrap';
 
 export default class LoginForm extends React.Component {
 
@@ -30,10 +31,14 @@ export default class LoginForm extends React.Component {
 
   handleChange(field) {
     return (e) => {
-      this.setState({[field]: e.target.value,});
+      this.setState({[field]: e.target.value});
     };
   }
 
+  hideModal() {
+    hashHistory.push('/')
+  }
+  
   renderErrors(errors) {
     return (
       <ul>
@@ -47,20 +52,37 @@ export default class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          { this.renderErrors(this.props.errors) }
-          <h1>Log In</h1>
-          <label>Username:
-            <input type="text" value={this.state.username} onChange={this.handleChange('username')} />
-          </label>
-          <label>Password:
-            <input type="password" value={this.state.password} onChange={this.handleChange('password')} />
-          </label>
-          <input type="submit" />
-          <Link to='/signUp'>Sign Up</Link>
-          </form>
-        </div>
+      <Modal
+        show={true}
+        onHide={this.hideModal}
+        dialogClassName="custom-modal">
+
+        <Modal.Header>
+          <Modal.Title>Please sign in</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <form className="sign-up-form" onSubmit={this.handleSubmit}>
+            { this.renderErrors(this.props.errors) }
+              <br />
+              <input type="text"
+              value={this.state.username}
+              onChange={this.handleChange('username')}
+              placeholder="Username"/>
+              <br />
+
+              <input type="password"
+              value={this.state.password}
+              onChange={this.handleChange('password')}
+              placeholder="Password"/>
+              <br />
+
+            <input className="auth-button" type="submit" value="Sign In" />
+
+            <p className="auth-footer">New to Table Crasher? <Link to='/signUp'>Create an account</Link></p>
+            </form>
+          </Modal.Body>
+        </Modal>
     );
   }
 }

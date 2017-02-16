@@ -1,0 +1,76 @@
+@import './assets/colors';
+@import './assets/fonts';
+
+.custom-modal {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-modal .modal-content {
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-flow: column;
+  height: auto;
+  justify-content: center;
+  width: 60%;
+
+
+  .modal-header {
+    border-bottom: 1px solid $light-grey;
+    margin: 15px 15px -10px 15px;
+    padding: 0 0 10px 0;
+
+    h4 {
+      font-size: 20px;
+      font-weight: 300;
+    }
+  }
+
+  .modal-body {
+    padding: 0 15px 15px 15px
+  }
+
+  .sign-up-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: $sans-serif;
+    font-weight: normal;
+    justify-content: center;
+
+    input {
+      border: 1px solid $light-grey;
+      border-radius: 2px;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+
+  .auth-button {
+    background-color: $red;
+    color: $white;
+    transition: .3s;
+
+    &:hover {
+      background-color: $red-hover;
+      transition: .3s;
+    }
+  }
+
+  .auth-footer {
+    align-self: flex-start;
+    font-family: $sans-serif;
+    padding: 15px 0 0;
+    a {
+      color: $red;
+
+      &:hover {
+        color: $red-hover;
+        text-decoration: none;
+      }
+    }
+  }
+
+
+}
