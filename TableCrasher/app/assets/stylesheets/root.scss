@@ -1,0 +1,22 @@
+@import './assets/colors';
+@import './assets/fonts';
+
+#home-div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: $sans-serif;;
+  justify-content: flex-start;
+}
+
+.modal-container {
+  position: relative;
+}
+
+.modal-container,
+.modal,
+.modal-container,
+.modal-backdrop {
+  position: absolute;
+  width: 100%;
+}
