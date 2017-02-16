@@ -1,3 +1,76 @@
-f {
-  color: #ff0000;
+@import './assets/colors';
+@import './assets/fonts';
+
+
+
+.header {
+  background-color: $white;
+  border-bottom: 1px solid $light-grey;
+  display: flex;
+  flex-direction: row;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: lighter;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+
+  * {
+    align-items: center;
+    display: flex;
+  }
+
+  a {
+    cursor: pointer;
+    margin: 0 2px;
+    padding: 14px 19px;
+    text-decoration: none;
+  }
+
+  h3 {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .auth-section {
+    border-left: 1px solid $light-grey;
+    border-right: 1px solid $light-grey;
+    padding: 0 16px;
+  }
+
+  .img-cont {
+    align-items: center;
+    height: auto;
+    justify-content: center;
+    padding: inherit  20px;
+    width: 90px;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .log {
+    color: $dark-grey;
+    transition: .3s;
+
+    &:hover {
+      color: $darker-grey;
+      text-decoration: none;
+    }
+  }
+
+  .sign-up {
+    background-color: $dark-turquoise;
+    border-radius: 3px;
+    color: $white;
+    transition: .3s;
+
+    &:hover {
+      background-color: $turquoise;
+      text-decoration: none;
+    }
+  }
+
 }
