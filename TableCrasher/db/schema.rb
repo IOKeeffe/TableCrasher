@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216153034) do
+ActiveRecord::Schema.define(version: 20170216212156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "image_url",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name",        null: false
@@ -42,6 +49,8 @@ ActiveRecord::Schema.define(version: 20170216153034) do
     t.string   "email_address",   null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "city_id"
+    t.index ["city_id"], name: "index_users_on_city_id", using: :btree
     t.index ["email_address"], name: "index_users_on_email_address", unique: true, using: :btree
     t.index ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree

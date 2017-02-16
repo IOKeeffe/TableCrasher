@@ -10,21 +10,25 @@ export const fetchRestaurants = () => dispatch => {
   .then(restaurants => dispatch(receiveRestaurants(restaurants)),
         errors => {dispatch(receiveErrors(errors));});
 };
+
 export const fetchRestaurant = id => dispatch => {
   return RestaurantApiUtil.receiveRestaurant(id)
   .then(restaurant => dispatch(receiveRestaurant(restaurant)),
         errors => {dispatch(receiveErrors(errors));});
 };
+
 export const createRestaurant = restaurant => dispatch => {
   return RestaurantApiUtil.createRestaurant(restaurant)
   .then(restaurant => dispatch(receiveRestaurant(restaurant)),
         errors => {dispatch(receiveErrors(errors));});
 };
+
 export const updateRestaurant = restaurant => dispatch => {
   return RestaurantApiUtil.updateRestaurant(restaurant)
   .then(restaurant => dispatch(receiveRestaurant(restaurant)),
         errors => {dispatch(receiveErrors(errors));});
 };
+
 export const deleteRestaurant = id => dispatch => {
   return RestaurantApiUtil.deleteRestaurant(id)
   .then(restaurant => dispatch(removeRestaurant(restaurant)),
