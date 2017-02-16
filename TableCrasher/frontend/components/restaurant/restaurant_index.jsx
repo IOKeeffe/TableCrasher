@@ -11,17 +11,18 @@ export default class RestaurantIndex extends React.Component {
   }
 
   render() {
-    const restaurantItems = this.props.restaurants.map((restaurant) =>{
+    const restaurantItems = this.props.restaurants.slice(0, 4).map((restaurant) =>{
       return (
       <RestaurantItem restaurant={restaurant} key={restaurant.id} />);});
     return (
-      <div>
         <section className="restaurant-index">
+          <section className="restaurant-index-header">
+            <h2>Restaurants</h2>
+          </section>
           <ul className="restaurant-list">
             {restaurantItems}
           </ul>
         </section>
-      </div>
     );
   }
 }

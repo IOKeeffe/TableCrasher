@@ -47,12 +47,12 @@ picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/11
                 "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_2_ssljno.jpg",
                 "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_jn7rsq.jpg"]
 
-5.times do
+15.times do
   cat = ["American", "Mexican", "Italian", "Indian", "Chinese", "French", "BBQ", "Vegetarian"].sample
   article = cat[0].in?(["A","E","I","O","U"]) ? "An" : "A"
   owner = User.all.sample
   Restaurant.create(
-    name: "The #{Faker::Color.color_name.capitalize} #{Faker::SlackEmoji.food_and_drink[1...-1].split("_").join(" ").titleize}",
+    name: "The #{Faker::Color.color_name.titleize} #{Faker::SlackEmoji.food_and_drink[1...-1].split("_").join(" ").titleize}",
     address: Faker::Address.street_address,
     state: "New York",
     zip_code: 11205,

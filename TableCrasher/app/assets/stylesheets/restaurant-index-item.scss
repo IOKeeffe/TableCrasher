@@ -1,7 +1,45 @@
+@import './assets/colors';
+
+.restaurant-index {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  left: 0;
+  padding-top: 62px;
+  position: absolute;
+  width: 100%;
+}
+
+.restaurant-list {
+  // align-items: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  // overflow: hidden;
+  padding-top: 62px;
+  position: relative;
+}
+
 .restaurant-item {
+  background-color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  list-style: none;
+  margin-right: 30px;
+  padding: 10px;
+
+  h2 {
+    color: $black;
+    font-size: 16px;
+  }
+
+  .category {
+    color: $grey;
+  }
+
   img {
-    border-radius: 50%;
-    height: 400px;
-    width: 800px;
+    border-radius: 4px;
+    height: 153px;
+    width: 263px;
   }
 }
