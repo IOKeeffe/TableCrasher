@@ -58,6 +58,15 @@
     }
   }
 
+  ul {
+    margin-top: 20px;
+    list-style: none;
+
+    li {
+      color: $red-hover;
+    }
+  }
+
   .auth-footer {
     align-self: flex-start;
     font-family: $sans-serif;

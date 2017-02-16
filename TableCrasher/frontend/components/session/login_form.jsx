@@ -38,7 +38,7 @@ export default class LoginForm extends React.Component {
   hideModal() {
     hashHistory.push('/')
   }
-  
+
   renderErrors(errors) {
     return (
       <ul>
@@ -62,8 +62,8 @@ export default class LoginForm extends React.Component {
         </Modal.Header>
 
         <Modal.Body>
+          { this.renderErrors(this.props.errors) }
           <form className="sign-up-form" onSubmit={this.handleSubmit}>
-            { this.renderErrors(this.props.errors) }
               <br />
               <input type="text"
               value={this.state.username}
