@@ -14,7 +14,8 @@ User.create(
   session_token: Faker::Crypto.md5,
   f_name: "Guest",
   l_name: "Guest",
-  email_address: "guest@guest.com"
+  email_address: "guest@guest.com",
+  city_id: 1,
 )
 
 20.times do
