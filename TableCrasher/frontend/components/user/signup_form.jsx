@@ -6,15 +6,6 @@ export default class SignUpForm extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.defaults = {
-      // f_name: 'First Name *',
-      // l_name: 'Last Name *',
-      // username: 'Enter username *',
-      // email_address: 'Enter email *',
-      // password: 'Enter Password *',
-      // passwordVer: 'Re-enter password *',
-    // };
-    // this.state = this.defaults;
     this.state = {
       f_name: '',
       l_name: '',
@@ -25,6 +16,7 @@ export default class SignUpForm extends React.Component {
 
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   componentDidUpdate() {
@@ -55,6 +47,7 @@ export default class SignUpForm extends React.Component {
   }
 
   hideModal() {
+    this.props.receiveErrors([]);
     hashHistory.push('/');
   }
 

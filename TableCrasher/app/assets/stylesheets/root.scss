@@ -1,12 +1,20 @@
 @import './assets/colors';
 @import './assets/fonts';
 
+#root {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+
 #home-div {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-family: $sans-serif;;
+  font-family: $source-sans;
   justify-content: flex-start;
+  position: absolute;
+  width: 100%;
 }
 
 .modal-container {
@@ -19,4 +27,36 @@
 .modal-backdrop {
   position: absolute;
   width: 100%;
+}
+
+.main-page {
+  background-color: $lightest-grey;
+  display: flex;
+  height: 100vh;
+  position: relative;
+  width: 100vh;
+}
+
+.content-holder {
+  display: flex;
+  flex-flow: column;
+  height: auto;
+  left: 5%;
+  position: relative;
+  width: 90%;
+}
+
+
+
+.clearfix {
+  display: inline-block;
+
+  &::after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+  }
 }

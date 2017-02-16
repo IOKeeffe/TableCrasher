@@ -19,9 +19,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.new(user_params)
-    if @user.save
-      log_in(@user)
+    @user = current_user
+    if @user.update_params(user_params)
       render :show
     else
       render json: @user.errors.full_messages, status: 422
@@ -29,7 +28,7 @@ class Api::UsersController < ApplicationController
   end
 
   def edit
-
+    @user = current_user
   end
 
 end
