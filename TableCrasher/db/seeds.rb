@@ -18,6 +18,16 @@ User.create(
   city_id: 1,
 )
 
+User.create(
+  username: "guy",
+  password: "starwars",
+  session_token: Faker::Crypto.md5,
+  f_name: "Guy",
+  l_name: "Von Trapp",
+  email_address: "guest@guest.com",
+  city_id: 1,
+)
+
 20.times do
   uname = Faker::GameOfThrones.character
   until(uname.split.length == 2) do
