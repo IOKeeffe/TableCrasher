@@ -11,8 +11,6 @@ const Root = ({store}) => (
       <Router history = { hashHistory }>
         <Route path="/" component={ App }>
           <IndexRoute component={ Main }/>
-          <Route path="/signup" component={ SignUpFormContainer } onEnter= {userCheck(store)}/>
-          <Route path="/login" component={ LogInFormContainer } onEnter= {userCheck(store)}/>
         </Route>
       </Router>
     </Provider>
