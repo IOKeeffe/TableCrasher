@@ -1,13 +1,16 @@
 @import './assets/colors';
 
 .restaurant-index {
+  background-color: white;
+  border-radius: 13px;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   left: 0;
-  padding-top: 62px;
-  position: absolute;
-  width: 100%;
+  margin-top: 62px;
+  padding: 0 30px 0 30px;
+  position: relative;
+  width: 75%;
 }
 
 .restaurant-list {
@@ -15,14 +18,19 @@
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
-  // overflow: hidden;
-  padding-top: 62px;
+  overflow: hidden;
+  padding-top: 22px;
   position: relative;
 }
 
+.restaurant-index-header {
+  border-bottom: 1px solid $light-grey;
+  padding: 15px 0;
+}
+
 .restaurant-item {
-  background-color: white;
   border-radius: 3px;
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,.1);
   cursor: pointer;
   list-style: none;
   margin-right: 30px;

@@ -33,30 +33,18 @@
   background-color: $lightest-grey;
   display: flex;
   height: 100vh;
+  left: 0;
   position: relative;
-  width: 100vh;
+  width: 100%;
 }
 
 .content-holder {
+  align-items: center;
   display: flex;
-  flex-flow: column;
-  height: auto;
-  left: 5%;
-  position: relative;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-start;
+  // left: 5%;
+  // position: relative;
   width: 90%;
-}
-
-
-
-.clearfix {
-  display: inline-block;
-
-  &::after {
-    clear: both;
-    content: '.';
-    display: block;
-    height: 0;
-    line-height: 0;
-    visibility: hidden;
-  }
 }
