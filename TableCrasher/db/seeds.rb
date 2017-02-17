@@ -11,7 +11,6 @@ Restaurant.delete_all
 User.create(
   username: "guest",
   password: "starwars",
-  session_token: Faker::Crypto.md5,
   f_name: "Guest",
   l_name: "Guest",
   email_address: "guest@guest.com",
@@ -21,7 +20,6 @@ User.create(
 User.create(
   username: "guy",
   password: "starwars",
-  session_token: Faker::Crypto.md5,
   f_name: "Guy",
   l_name: "Von Trapp",
   email_address: "guest@guest.com",
@@ -43,8 +41,7 @@ User.create(
   )
 end
 
-picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/11onlinereservationpark_sfk42b.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/scandic-sundsvall-city-restaurant-verket-10_madk5z.jpg",
+picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/scandic-sundsvall-city-restaurant-verket-10_madk5z.jpg",
                 "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-c-michiel-van-der-eerde-amsterdam-2_yuyi7g.jpg",
                 "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-c-michiel-van-der-eerde-amsterdam-1_ycjjbc.jpg",
                 "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-carousel-1_lykh1n.jpg",
@@ -62,7 +59,7 @@ picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/11
   article = cat[0].in?(["A","E","I","O","U"]) ? "An" : "A"
   owner = User.all.sample
   Restaurant.create(
-    name: "The #{Faker::Color.color_name.titleize} #{Faker::SlackEmoji.food_and_drink[1...-1].split("_").join(" ").titleize}",
+    name: "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient}",
     address: Faker::Address.street_address,
     state: "New York",
     zip_code: 11205,

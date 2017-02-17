@@ -12,15 +12,21 @@ export default class LoginForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.renderSignUp = this.renderSignUp.bind(this);
   }
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();
   }
 
+  renderSignUp(e) {
+    e.preventDefault();
+    this.props.toggleSigningUp(true);
+  }
+
   redirectIfLoggedIn() {
     if (this.props.loggedIn) {
-      hashHistory.push("/");
+      this.hideModal();
     }
   }
 
@@ -37,8 +43,9 @@ export default class LoginForm extends React.Component {
   }
 
   hideModal() {
-    this.props.receiveErrors([]);
-    hashHistory.push('/');
+    if(this.props.signingIn) {
+      this.props.toggleSigningIn();
+    }
   }
 
   renderErrors(errors) {
@@ -57,7 +64,7 @@ export default class LoginForm extends React.Component {
   render() {
     return (
       <Modal
-        show={true}
+        show={this.props.signingIn}
         onHide={this.hideModal}
         dialogClassName="custom-modal">
 
@@ -83,7 +90,7 @@ export default class LoginForm extends React.Component {
 
             <input className="auth-button" type="submit" value="Sign In" />
 
-            <p className="auth-footer">New to Table Crasher? <Link to='/signUp'>Create an account</Link></p>
+            <p className="auth-footer">New to Table Crasher? <a onClick={this.renderSignUp}>Create an account</a></p>
             </form>
           </Modal.Body>
         </Modal>

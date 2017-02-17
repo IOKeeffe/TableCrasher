@@ -1,4 +1,4 @@
-import { logOut, logIn } from '../../actions/session_actions';
+import { logOut, logIn, renderSignInForm, renderSignUpForm } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import Header from './header';
 
@@ -11,6 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    signingIn: () => (dispatch(renderSignInForm(true))),
+    signingUp: () => (dispatch(renderSignUpForm(true))),
     logOut: () => (dispatch(logOut())),
     logIn: (user) => (dispatch(logIn(user))),
   };
