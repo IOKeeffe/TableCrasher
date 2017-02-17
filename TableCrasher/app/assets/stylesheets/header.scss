@@ -28,7 +28,10 @@
   }
 
   h3 {
+    color: $grey;
     cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
     margin-top: 10px;
   }
 
