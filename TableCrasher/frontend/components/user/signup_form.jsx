@@ -25,7 +25,7 @@ export default class SignUpForm extends React.Component {
 
   redirectIfLoggedIn() {
     if (this.props.loggedIn) {
-      this.props.router.push('/');
+      this.hideModal();
     }
   }
 
@@ -47,8 +47,9 @@ export default class SignUpForm extends React.Component {
   }
 
   hideModal() {
-    this.props.receiveErrors([]);
-    hashHistory.push('/');
+    if(this.props.signingUp) {
+      this.props.toggleSigningUp();
+    }
   }
 
   renderErrors(errors) {
@@ -66,9 +67,10 @@ export default class SignUpForm extends React.Component {
   render() {
     return (
       <Modal
-        show={true}
+        show={this.props.signingUp}
         onHide={this.hideModal}
         dialogClassName="custom-modal">
+
         <Modal.Header>
           <Modal.Title>Welcome to Table Crasher!</Modal.Title>
         </Modal.Header>
