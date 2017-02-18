@@ -10,4 +10,10 @@
 #
 
 class City < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
+  validates :image_url, presence: true
+
+  has_many :users
+  has_many :restaurants
+
 end
