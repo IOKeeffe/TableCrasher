@@ -2,8 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
-import LogInFormContainer from './session/login_form_container';
-import SignUpFormContainer from './user/signup_form_container';
+import RestaurantDetailContainer from './user/signup_form_container';
 import Main from './main';
 
 const Root = ({store}) => (
@@ -11,6 +10,7 @@ const Root = ({store}) => (
       <Router history = { hashHistory }>
         <Route path="/" component={ App }>
           <IndexRoute component={ Main }/>
+          <Route path="/restaurant/:restaurantId" component={RestaurantDetailContainer} />
         </Route>
       </Router>
     </Provider>
