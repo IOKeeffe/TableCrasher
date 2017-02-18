@@ -1,4 +1,5 @@
 export const receiveRestaurant = (id) => {
+  debugger
   return $.ajax({
     method: "GET",
     url: `api/restaurants/${id}`,
@@ -16,6 +17,14 @@ export const createRestaurant = (restaurant) => {
     method: "POST",
     url: "api/restaurants/",
     data: {restaurant},
+  });
+};
+
+export const searchRestaurants = (search_term) => {
+  return $.ajax({
+    method: "GET",
+    url: "api/restaurants/search",
+    data: {search_term},
   });
 };
 

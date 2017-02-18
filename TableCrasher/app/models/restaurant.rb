@@ -27,4 +27,16 @@ class Restaurant < ApplicationRecord
     foreign_key: "owner_id",
     primary_key: "id"
 
+  belongs_to :city
+
+    def self.search(search_term)
+    return Restaurant.all if search_term == ""
+    Restaurant
+      .left_joins(:city)
+      .where(
+        "LOWER(restaurants.name) LIKE :search_term OR LOWER(cities.name) LIKE :search_term",
+        search_term: "%#{search_term.downcase}%"
+      )
+  end
+
 end
