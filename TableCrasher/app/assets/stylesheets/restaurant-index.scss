@@ -1,12 +1,14 @@
 .restaurant-index {
-  background-color: white;
+  background-color: $white;
   border-radius: 13px;
+  box-shadow: 0 2px 2px 0 $shadow;
   display: flex;
   flex-flow: column;
+  height: 40%;
   justify-content: flex-start;
   left: 0;
   margin-top: 62px;
-  padding: 0 30px 0 30px;
+  padding: 0 30px;
   position: relative;
   width: 75%;
 }
@@ -27,8 +29,6 @@
 }
 
 .restaurant-item {
-  border-radius: 3px;
-  box-shadow: 0px 2px 2px 0px rgba(0,0,0,.1);
   cursor: pointer;
   list-style: none;
   margin-right: 30px;
