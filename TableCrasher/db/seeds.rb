@@ -5,8 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+city_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/141001144835-innovative-cities-philly-1024x576",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/201411-a-americas-favorite-cities-new-york",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/1680856-poster-1280-10-smartest-european-cities-shutterstock-78340003-1",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/cities",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/tokyo",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/chicago-1"]
+
+  restaurant_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/scandic-sundsvall-city-restaurant-verket-10_madk5z.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-c-michiel-van-der-eerde-amsterdam-2_yuyi7g.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-carousel-1_lykh1n.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-939435_960_720_mbge7l.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_w9l2lj.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Benchmark_Restaurant_Dining_Room_Photographed_by_Evan_Sung_wg3rxq.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Restaurant_1_crga5j.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/lockwood-chicago-restaurant-bar-2_io6opj.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/home_restaurants-1_n1wljo.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_2_ssljno.jpg",
+    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_jn7rsq.jpg"]
 
 User.delete_all
+City.delete_all
 Restaurant.delete_all
 User.create(
   username: "guest",
@@ -18,13 +37,20 @@ User.create(
 )
 
 User.create(
-  username: "guy",
+username: "guy",
   password: "starwars",
   f_name: "Guy",
   l_name: "Von Trapp",
   email_address: "guest@guest.com",
   city_id: 1,
 )
+
+6.times do |i|
+  City.create(
+  name: Faker::GameOfThrones.city,
+  image_url: city_picture_urls[i],
+  )
+end
 
 20.times do
   uname = Faker::GameOfThrones.character
@@ -35,39 +61,28 @@ User.create(
     username: uname.split(" ").join(""),
     password: "starwars",
     session_token: Faker::Crypto.md5,
+    city_id: City.all.sample.id,
     f_name: uname.split(" ")[0],
     l_name: uname.split(" ")[1],
     email_address: "#{uname.split(" ").join("")}@#{Faker::GameOfThrones.house.split(" ").join("")}.com"
   )
 end
 
-picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/scandic-sundsvall-city-restaurant-verket-10_madk5z.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-c-michiel-van-der-eerde-amsterdam-2_yuyi7g.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-c-michiel-van-der-eerde-amsterdam-1_ycjjbc.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-carousel-1_lykh1n.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-939435_960_720_mbge7l.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_w9l2lj.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Benchmark_Restaurant_Dining_Room_Photographed_by_Evan_Sung_wg3rxq.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Restaurant_1_crga5j.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/lockwood-chicago-restaurant-bar-2_io6opj.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/home_restaurants-1_n1wljo.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_2_ssljno.jpg",
-                "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_jn7rsq.jpg"]
 
-15.times do
+20.times do
   cat = ["American", "Mexican", "Italian", "Indian", "Chinese", "French", "BBQ", "Vegetarian"].sample
   article = cat[0].in?(["A","E","I","O","U"]) ? "An" : "A"
   owner = User.all.sample
   Restaurant.create(
-    name: "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient}",
+    name: "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}",
     address: Faker::Address.street_address,
     state: "New York",
     zip_code: 11205,
     category: cat,
+    city_id: City.all.sample.id,
     description: "#{article} #{cat} restaurant specializing in locavore fare, from head chef #{owner.f_name} #{owner.l_name}",
-    image_url: picture_urls.sample,
+    image_url: restaurant_picture_urls.sample,
     price: (1..4).to_a.sample,
-    city_id: 1,
     owner_id: owner.id,
   )
 end
