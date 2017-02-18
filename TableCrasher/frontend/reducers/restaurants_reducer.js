@@ -1,4 +1,4 @@
-import { RECEIVE_ERRORS, RECEIVE_ALL_RESTAURANTS} from '../actions/restaurant_actions';
+import { RECEIVE_ERRORS, RECEIVE_RESTAURANTS} from '../actions/restaurant_actions';
 import merge from 'lodash/merge';
 
 const RestaurantsReducer = (oldState = {restaurants: null, errors: []}, action) => {
@@ -6,7 +6,7 @@ const RestaurantsReducer = (oldState = {restaurants: null, errors: []}, action) 
   const newState = merge({}, oldState);
 
   switch(action.type) {
-  case RECEIVE_ALL_RESTAURANTS:
+  case RECEIVE_RESTAURANTS:
     newState.errors = [];
     newState.restaurants = action.restaurants;
     return newState;
