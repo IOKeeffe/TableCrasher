@@ -17,6 +17,17 @@
       id: 1
       name: "New York",
       image_url: "http://host.com/NewYork/1",
+    },
+    cities: {
+      1:{
+        id: 1,
+        image_url: "host.com/newyork",
+        name: "New York",
+        restaurant_count: 4
+      }
+      currentCity: {
+        id: 1,
+      }
     }
   },
   restaurantsIndex: {

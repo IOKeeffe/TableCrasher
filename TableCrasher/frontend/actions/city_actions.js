@@ -1,10 +1,16 @@
 import * as CityApiUtil from '../util/city_api_util';
+import * as RestaurantApiUtil from '../util/restaurant_api_util';
+import { receiveRestaurants } from './restaurant_actions';
 
 export const RECEIVE_CITY = 'RECEIVE_CITY';
-export const RECEIVE_CITY_RESTAURANTS = 'RECEIVE_CITY_RESTAURANTS';
+export const RECEIVE_CITIES = 'RECEIVE_CITIES';
 
 export const fetchCityRestaurants = id => dispatch => {
-  return CityApiUtil.fetchCityRestaurants(id).then(city => dispatch(receiveCity(city)));
+  return CityApiUtil.fetchCityRestaurants(id).then(city => {
+    dispatch(receiveCity(city));
+    dispatch(receiveRestaurants(city.restaurants));
+  });
+    // .then(city => dispatch(receiveRestaurants(city.restaurants)));
 };
 
 export const fetchCities = () => dispatch => {
@@ -17,6 +23,6 @@ export const receiveCity = (city) => ({
 });
 
 export const receiveCities = (cities) => ({
-  type: RECEIVE_CITY_RESTAURANTS,
+  type: RECEIVE_CITIES,
   cities,
 });

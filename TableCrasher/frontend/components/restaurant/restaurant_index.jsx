@@ -7,7 +7,7 @@ export default class RestaurantIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchRestaurants();
+    this.props.fetchAllRestaurants();
   }
 
   render() {
