@@ -1,0 +1,53 @@
+.restaurant-detail {
+  align-items: flex-start;
+  display: flex;
+  height: 100%;
+
+  // position: relative;
+  width: 84%;
+
+  .favorites-banner {
+    background-color: $black;
+    position: absolute;
+  }
+
+  .info-box {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    margin: 16px;
+    width: 100%;
+  }
+  .info-box section {
+    background: $white;
+    height: 100%;
+    margin: 35px 25px;
+    padding: 25px;
+    width: 100%;
+  }
+  .info-box h2 {
+    margin-top: 0;
+  }
+  .restaurant-index-header {
+    img {
+      display: none;
+    }
+    .restaurant-name {
+      font-size: 36px;
+      font-weight: 400;
+    }
+  }
+
+  .restaurant-image {
+    margin: 83px 10px 0;
+    img {
+      border-radius: 10px;
+      height: 146px;
+      width: 146px;
+    }
+
+  }
+
+}

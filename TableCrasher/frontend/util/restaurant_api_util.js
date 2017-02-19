@@ -19,6 +19,14 @@ export const createRestaurant = (restaurant) => {
   });
 };
 
+export const searchRestaurants = (search_term) => {
+  return $.ajax({
+    method: "GET",
+    url: "api/restaurants/search",
+    data: {search_term},
+  });
+};
+
 export const updateRestaurant = (restaurant) => {
   return $.ajax({
     method: "PATCH",
