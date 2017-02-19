@@ -8,10 +8,10 @@ import React from 'react';
 
 export default () => (
   <div className="main-page">
+  <SearchBarContainer />
     <div className="content-holder">
       <SignInFormContainer />
       <SignUpFormContainer />
-      <SearchBarContainer />
       <RestaurantIndexContainer />
       <CityIndexContainer />
     </div>

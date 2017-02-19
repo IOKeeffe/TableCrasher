@@ -54,7 +54,7 @@ class Header extends React.Component {
     else {
       return (
         <div className="auth-section">
-        <a onClick={this.renderSignUpForm} className="log" >
+        <a onClick={this.renderSignUpForm} className="sign-up" >
         Sign Up
         </a>
         <a onClick={this.renderSignInForm} className="log" >

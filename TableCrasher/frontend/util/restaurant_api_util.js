@@ -1,5 +1,4 @@
 export const receiveRestaurant = (id) => {
-  debugger
   return $.ajax({
     method: "GET",
     url: `api/restaurants/${id}`,

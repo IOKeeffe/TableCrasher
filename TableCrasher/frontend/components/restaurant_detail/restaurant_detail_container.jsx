@@ -1,13 +1,17 @@
 import { connect } from 'react-redux';
-import RestaurantIndex from './restaurant_index';
+import RestaurantDetail from './restaurant_detail';
+import { fetchRestaurant } from '../../actions/restaurant_actions';
 
 
-const mapStateToProps = ({restaurantDetail}) => ({
-  restaurantDetail,
-});
+const mapStateToProps = (state, ownProps) => {
+  return {
+    restaurant: state.restaurantDetail.restaurant,
+    id: ownProps.params.restaurantId,
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
-
+  fetchRestaurant: (id) => dispatch(fetchRestaurant(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantDetail);
