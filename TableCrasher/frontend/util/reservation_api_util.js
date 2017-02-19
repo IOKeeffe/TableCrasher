@@ -1,21 +1,21 @@
-export const receiveReservation = (id) => {
+export const receivePotentialReservations = (id) => {
   return $.ajax({
     method: "GET",
-    url: `api/reservation/${id}`
+    url: `api/reservation/${id}`,
   });
 };
 
-export const receiveReservations = () => {
+export const receiveUserReservations = () => {
   return $.ajax({
     method: "GET",
-    url: `api/reservations/`,
+    url: `api/reservations`,
   });
 };
 
 export const createReservation = (reservation) => {
   return $.ajax({
     method: "POST",
-    url: "api/reservations/",
+    url: "api/reservations",
     data: {reservation},
   });
 };
