@@ -1,11 +1,11 @@
 import * as RestaurantApiUtil from '../util/restaurant_api_util';
 
-export const RECEIVE_ALL_RESTAURANTS = "RECEIVE_ALL_RESTAURANTS";
+export const RECEIVE_RESTAURANTS = "RECEIVE_ALL_RESTAURANTS";
 export const RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const REMOVE_RESTAURANT = "REMOVE_RESTAURANT";
 
-export const fetchRestaurants = () => dispatch => {
+export const fetchAllRestaurants = () => dispatch => {
   return RestaurantApiUtil.receiveRestaurants()
   .then(restaurants => dispatch(receiveRestaurants(restaurants)),
         errors => {dispatch(receiveErrors(errors));});
@@ -35,10 +35,17 @@ export const deleteRestaurant = id => dispatch => {
         errors => {dispatch(receiveErrors(errors));});
 };
 
-export const receiveRestaurants = (restaurants) => ({
-  type: RECEIVE_ALL_RESTAURANTS,
-  restaurants,
-});
+export const searchRestaurants = search_term => dispatch => {
+  return RestaurantApiUtil.searchRestaurants(search_term)
+  .then(restaurants => dispatch(receiveRestaurants(restaurants)),
+        errors => dispatch(receiveErrors(errors)));
+};
+
+export const receiveRestaurants = (restaurants) => {
+  return ({
+    type: RECEIVE_RESTAURANTS,
+    restaurants,
+  });};
 
 export const receiveRestaurant = (restaurant) => ({
   type: RECEIVE_RESTAURANT,

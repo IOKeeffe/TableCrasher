@@ -21,6 +21,12 @@ class Api::RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find_by(id: params[:id])
+    render :show
+  end
+
+  def search
+    @restaurants = Restaurant.search(params[:search_term])
+    render :index
   end
 
   def update
