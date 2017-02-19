@@ -4,14 +4,26 @@ export const RECEIVE_RESERVATION = 'RECEIVE_RESERVATION';
 export const RECEIVE_RESERVATIONS = 'RECEIVE_RESERVATIONS';
 export const REMOVE_RESERVATION = 'REMOVE_RESERVATION';
 
-export const fetchReservation = id => dispatch => {
-  return ReservationApiUtil.receiveReservation(id).then(reservation => {
-    dispatch(receiveReservation(reservation));
+export const fetchPotentialReservations = (reservation) => dispatch => {
+  return ReservationApiUtil.receivePotentialReservations(reservation).then(reservations => {
+    dispatch(receiveReservations(reservations));
   });
 };
 
-export const fetchCities = () => dispatch => {
-  return CityApiUtil.fetchCities().then(cities => dispatch(receiveCities(cities)));
+export const fetchUserReservations = () => dispatch => {
+  return ReservationApiUtil.receiveUserReservations().then(reservations => dispatch(receiveReservations(reservations)));
+};
+
+export const createReservation = reservation => {
+  return ReservationApiUtil.createReservation(reservation).then(reservation => dispatch(receiveReservation(reservation)));
+};
+
+export const updateReservation = reservation => {
+  return ReservationApiUtil.updateReservation(reservation).then(reservation => dispatch(receiveReservation(reservation)));
+};
+
+export const deleteReservation = id => {
+  return ReservationApiUtil.deleteReservation(id).then(reservation => dispatch(receiveReservation(reservation)));
 };
 
 export const receiveReservation = reservation => ({

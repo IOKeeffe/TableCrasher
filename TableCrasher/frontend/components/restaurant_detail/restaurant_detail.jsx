@@ -1,5 +1,6 @@
 import React from 'react';
 import RestaurantItem from '../restaurant/restaurant_item';
+import ReservationFormContainer from '../reservations/reservation_form_container';
 
 export default class RestaurantDetail extends React.Component {
   constructor(props) {
@@ -9,6 +10,10 @@ export default class RestaurantDetail extends React.Component {
 
   componentDidMount() {
     this.props.fetchRestaurant(this.props.id);
+  }
+
+  componentWillDismount() {
+    this.props.receiveRestaurant(null);
   }
 
   render() {
@@ -22,6 +27,9 @@ export default class RestaurantDetail extends React.Component {
             <section className="info-box">
               <section className="restaurant-index-header">
                 <RestaurantItem restaurant={restaurant} />
+              </section>
+              <section className="reservation-form">
+                <ReservationFormContainer restaurant={restaurant} />
               </section>
               <section className="restaurant-info">
                 <h2>{`About ${restaurant.name}`}</h2>

@@ -13,13 +13,50 @@
 
 class Reservation < ApplicationRecord
   validates :user_id, :restaurant_id, :party_size, :time_slot, presence: true
-  validate :table_available
+  validate :table_available?
 
   belongs_to :user
   belongs_to :restaurant
+
   def table_available?
-    return unless customers_at_time + party_size < this.restaurant.seating
+    return if customers_at_time + party_size < self.restaurant.seating
     errors[:time_slot] << "No seating available at that time."
+  end
+
+  def adjacent_reservations
+    potential_reservations = []
+    5.times do |i|
+      tempId = i
+      case i
+        when 0
+          newTime = self.time_slot - 30.minutes
+        when 1
+          newTime = self.time_slot - 15.minutes
+        when 2
+          newTime = self.time_slot
+        when 3
+          newTime = self.time_slot + 15.minutes
+        when 4
+          newTime = self.time_slot + 30.minutes
+      end
+      new_reservation = Reservation.buildReservation(self, newTime, tempId)
+      if new_reservation.valid?
+        potential_reservations.push(new_reservation)
+      else
+        potential_reservations.push(nil)
+      end
+    end
+    potential_reservations
+  end
+
+  def self.buildReservation(oldRez, new_time, tempId)
+    r = Reservation.new
+    r.user_id = oldRez.user_id
+    r.restaurant_id = oldRez.restaurant_id
+    r.party_size = oldRez.party_size
+    r.time_slot = new_time
+    r.id = tempId
+    r
   end
 
   private
@@ -27,11 +64,12 @@ class Reservation < ApplicationRecord
     Reservation
       .where.not(id: self.id)
       .where(restaurant_id: restaurant_id)
-      .where(<<-SQL, time_slot: time_slot,)
-         NOT( DATEADD(hh, 1, time_slot) <  :time_slot)
-         OR (DATEADD(hh, 1, :time_slot) < time_slot) )
-      SQL
-      .count
+      .where(time_slot: time_slot)
+      .sum(:party_size)
+      # .where(<<-SQL, time_slot: time_slot)
+      #    NOT(DATEADD(HOUR, 1, time_slot) <  :time_slot)
+      #    OR (DATEADD(HOUR, 1, :time_slot) < time_slot)
+      # SQL
   end
 
 end

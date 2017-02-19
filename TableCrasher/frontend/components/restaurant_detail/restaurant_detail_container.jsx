@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import RestaurantDetail from './restaurant_detail';
-import { fetchRestaurant } from '../../actions/restaurant_actions';
+import { fetchRestaurant, receiveRestaurant } from '../../actions/restaurant_actions';
 
 
 const mapStateToProps = (state, ownProps) => {

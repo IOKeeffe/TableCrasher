@@ -11,13 +11,14 @@ class Api::ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = Reservation.where(user_id: current_user.id)
+    @reservations = Reservation.where(user_id: current_user.id).where("time_slot > ?", Time.now)
     render :index
   end
 
   def show
-    @reservation = Reservation.find_by(id: params[:id])
-    render :show
+    requested_reservation = Reservation.find(params[:id])
+    @reservations = requested_reservation.adjacent_reservations
+    render :index
   end
 
   def update
