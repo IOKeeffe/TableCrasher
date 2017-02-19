@@ -7,18 +7,17 @@
 
   .gallery {
     // align-items: stretch;
-    background-color: red;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     height: 100%;
     justify-content: flex-start;
     margin: 0;
-    overflow-y: scroll;
     width: 100%;
 
     .gallery-pic {
       list-style: none;
+      margin-right: 10px;
       width: 25%;
 
       img {
