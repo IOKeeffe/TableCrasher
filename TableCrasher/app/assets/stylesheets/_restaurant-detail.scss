@@ -30,7 +30,10 @@
   .info-box h2 {
     margin-top: 0;
   }
-  .restaurant-index-header {
+  .restaurant-index-header  {
+    .restaurant-item {
+      cursor: auto;
+    }
     img {
       display: none;
     }

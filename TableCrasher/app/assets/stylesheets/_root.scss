@@ -1,9 +1,7 @@
 #root {
   display: flex;
   flex-flow: column;
-  height: 100%;
   justify-content: flex-start;
-  width: 100%;
 }
 
 #home-div {
@@ -12,10 +10,8 @@
   display: flex;
   flex-direction: column;
   font-family: $source-sans;
-  height: 100%;
   justify-content: flex-start;
   position: absolute;
-  width: 100%;
 }
 
 div[class^="price"] {
