@@ -30,7 +30,7 @@
       }
     }
   },
-  restaurantsIndex: {
+  restaurants: {
     restaurants: {
       1: {
         id: 1,

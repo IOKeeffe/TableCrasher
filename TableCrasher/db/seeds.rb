@@ -12,17 +12,28 @@ city_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restauran
   "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/tokyo",
   "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/chicago-1"]
 
-  restaurant_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/scandic-sundsvall-city-restaurant-verket-10_madk5z.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-c-michiel-van-der-eerde-amsterdam-2_yuyi7g.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-carousel-1_lykh1n.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-939435_960_720_mbge7l.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_w9l2lj.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Benchmark_Restaurant_Dining_Room_Photographed_by_Evan_Sung_wg3rxq.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Restaurant_1_crga5j.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/lockwood-chicago-restaurant-bar-2_io6opj.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/home_restaurants-1_n1wljo.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_2_ssljno.jpg",
-    "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_jn7rsq.jpg"]
+restaurant_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/scandic-sundsvall-city-restaurant-verket-10_madk5z.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-c-michiel-van-der-eerde-amsterdam-2_yuyi7g.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-carousel-1_lykh1n.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-939435_960_720_mbge7l.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_w9l2lj.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Benchmark_Restaurant_Dining_Room_Photographed_by_Evan_Sung_wg3rxq.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Restaurant_1_crga5j.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/lockwood-chicago-restaurant-bar-2_io6opj.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/home_restaurants-1_n1wljo.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_2_ssljno.jpg",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_jn7rsq.jpg"]
+
+food_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/so24",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/st07",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-offerings-cta",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/pizza-junk-food-600",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download_1",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download_3",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/images",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download_2",
+  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download_4"]
 
 User.delete_all
 City.delete_all
@@ -70,6 +81,10 @@ end
 
 
 20.times do
+  gal = []
+  8.times do
+    gal.push(food_picture_urls.sample)
+  end
   cat = ["American", "Mexican", "Italian", "Indian", "Chinese", "French", "BBQ", "Vegetarian"].sample
   article = cat[0].in?(["A","E","I","O","U"]) ? "An" : "A"
   owner = User.all.sample
@@ -80,6 +95,7 @@ end
     zip_code: 11205,
     category: cat,
     city_id: City.all.sample.id,
+    gallery: gal,
     description: "#{article} #{cat} restaurant specializing in locavore fare, from head chef #{owner.f_name} #{owner.l_name}",
     image_url: restaurant_picture_urls.sample,
     price: (1..4).to_a.sample,

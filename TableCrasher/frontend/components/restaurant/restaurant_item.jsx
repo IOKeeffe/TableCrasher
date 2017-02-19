@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
-export default ({restaurant}) => {
-  const redirect = (id) => {
-    // REINSTATE
-    // hashHistory.push(`/restaurants/${id}`);
-  };
+export default (props) => {
 
   return (
-  <li className="restaurant-item" onClick={(e) => redirect(e.currentTarget.id)}>
-    <img src={restaurant.image_url} alt={restaurant.name}/>
-    <h2>{restaurant.name}</h2>
-    <h2 className="category">{restaurant.category}</h2>
-  </li>
+    <li className="restaurant-item" onClick={props.onClick}>
+      <img src={props.restaurant.image_url} alt={props.restaurant.name}/>
+      <h2 className="restaurant-name">{props.restaurant.name}</h2>
+      <div className={`price-${props.restaurant.price}`}>
+          <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+          <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+          <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+          <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+        </div>
+      <h2 className="category">{props.restaurant.category}</h2>
+    </li>
   );
 };
