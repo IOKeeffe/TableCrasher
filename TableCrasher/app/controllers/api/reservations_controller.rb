@@ -16,8 +16,13 @@ class Api::ReservationsController < ApplicationController
   end
 
   def show
+    debugger
     requested_reservation = Reservation.new(reservation_params)
-    @reservations = requested_reservation.adjacent_reservations
+    if(params[:reservation][:search_term])
+      @reservations = requested_reservation.search_reservations(params[:reservation][:search_term])
+    else
+      @reservations = requested_reservation.adjacent_reservations
+    end
     render :index
   end
 
@@ -41,7 +46,7 @@ class Api::ReservationsController < ApplicationController
     params.require(:reservation).permit(
       :party_size,
       :time_slot,
-      :restaurant_id
+      :restaurant_id,
     )
   end
 

@@ -5,7 +5,7 @@ import App from './app';
 import RestaurantDetailContainer from './restaurant_detail/restaurant_detail_container';
 import Main from './main';
 
-import SearchResults from './reservations/search_results'
+import SearchResultsContainer from './reservations/search_results_container'
 
 const Root = ({store}) => (
     <Provider store={store}>
@@ -13,7 +13,7 @@ const Root = ({store}) => (
         <Route path="/" component={ App }>
           <IndexRoute component={ Main }/>
           <Route path="/restaurants/:restaurantId" component={RestaurantDetailContainer} />
-          <Route path="/search-results" component={SearchResults} />
+          <Route path="/search-results" component={SearchResultsContainer} />
         </Route>
       </Router>
     </Provider>

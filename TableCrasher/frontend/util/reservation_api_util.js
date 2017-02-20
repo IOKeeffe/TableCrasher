@@ -1,7 +1,8 @@
 export const receivePotentialReservations = (reservation) => {
   return $.ajax({
     method: "GET",
-    url: `api/reservation/${reservation}`,
+    url: `api/reservations/${reservation.id}`,
+    data: {reservation},
   });
 };
 
