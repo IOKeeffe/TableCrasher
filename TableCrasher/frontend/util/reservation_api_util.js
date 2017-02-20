@@ -1,7 +1,7 @@
-export const receivePotentialReservations = (id) => {
+export const receivePotentialReservations = (reservation) => {
   return $.ajax({
     method: "GET",
-    url: `api/reservation/${id}`,
+    url: `api/reservation/${reservation}`,
   });
 };
 
