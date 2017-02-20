@@ -1,5 +1,11 @@
 import React from 'react';
 
-export default (props) => {
-  debugger;
-};
+export default class SearchResults extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (<div>COOL!</div>);
+  }
+}

@@ -49,11 +49,25 @@ class Reservation < ApplicationRecord
     potential_reservations
   end
 
+  def search_reservations(search_term)
+    potential_reservations = []
+    restaurants = Restaurant.search(search_term).to_a
+    restaurants.each do |restaurant|
+
+      original_rez = Reservation.new(
+        restaurant_id: restaurant.id,
+        time_slot: self.time_slot,
+        party_size: self.party_size,
+      )
+
+      potential_reservations.concat(original_rez.adjacent_reservations)
+    end
+
+    potential_reservations
+  end
+
   def self.buildReservation(oldRez, new_time, tempId)
-    r = Reservation.new
-    r.user_id = oldRez.user_id
-    r.restaurant_id = oldRez.restaurant_id
-    r.party_size = oldRez.party_size
+    r = oldRez.clone
     r.time_slot = new_time
     r.id = tempId
     r
