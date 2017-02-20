@@ -12,8 +12,8 @@ export default class RestaurantDetail extends React.Component {
     this.props.fetchRestaurant(this.props.id);
   }
 
-  componentWillDismount() {
-    this.props.receiveRestaurant(null);
+  componentWillUnmount() {
+    this.props.unmountRestaurant();
   }
 
   render() {

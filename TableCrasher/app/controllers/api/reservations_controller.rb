@@ -16,7 +16,7 @@ class Api::ReservationsController < ApplicationController
   end
 
   def show
-    requested_reservation = Reservation.find(params[:id])
+    requested_reservation = Reservation.new(reservation_params)
     @reservations = requested_reservation.adjacent_reservations
     render :index
   end

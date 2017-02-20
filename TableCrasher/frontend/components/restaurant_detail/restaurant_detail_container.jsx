@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchRestaurant: (id) => dispatch(fetchRestaurant(id)),
+  unmountRestaurant: () => dispatch(receiveRestaurant(null)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantDetail);
