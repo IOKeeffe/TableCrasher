@@ -1,12 +1,17 @@
 import * as ReservationApiUtil from '../util/reservation_api_util';
+import { receiveRestaurants } from './restaurant_actions';
 
 export const RECEIVE_RESERVATION = 'RECEIVE_RESERVATION';
 export const RECEIVE_RESERVATIONS = 'RECEIVE_RESERVATIONS';
 export const REMOVE_RESERVATION = 'REMOVE_RESERVATION';
+export const FETCHING_RESERVATIONS = 'FETCHING_RESERVATIONS';
 
 export const fetchPotentialReservations = (reservation) => dispatch => {
-  return ReservationApiUtil.receivePotentialReservations(reservation).then(reservations => {
+  dispatch(fetching(true));
+  return ReservationApiUtil.receivePotentialReservations(reservation).then(({reservations, restaurants}) => {
     dispatch(receiveReservations(reservations));
+    dispatch(receiveRestaurants(restaurants));
+    dispatch(fetching(false));
   });
 };
 
@@ -14,27 +19,36 @@ export const fetchUserReservations = () => dispatch => {
   return ReservationApiUtil.receiveUserReservations().then(reservations => dispatch(receiveReservations(reservations)));
 };
 
-export const createReservation = reservation => {
+export const createReservation = reservation => dispatch => {
   return ReservationApiUtil.createReservation(reservation).then(reservation => dispatch(receiveReservation(reservation)));
 };
 
-export const updateReservation = reservation => {
+export const updateReservation = reservation => dispatch => {
   return ReservationApiUtil.updateReservation(reservation).then(reservation => dispatch(receiveReservation(reservation)));
 };
 
-export const deleteReservation = id => {
+export const deleteReservation = id => dispatch => {
   return ReservationApiUtil.deleteReservation(id).then(reservation => dispatch(receiveReservation(reservation)));
 };
 
-export const receiveReservation = reservation => ({
-  type: RECEIVE_RESERVATION,
-  reservation,
-});
+export const receiveReservation = reservation => {
+  return {
+    type: RECEIVE_RESERVATION,
+    reservation,
+  };
+};
 
-export const receiveReservations = (reservations) => ({
-  type: RECEIVE_RESERVATION,
-  reservations,
-});
+export const receiveReservations = (reservations) => {
+  return {type: RECEIVE_RESERVATIONS,
+    reservations};
+};
+
+export const fetching = (fetchingVal) => {
+  return {
+    type: FETCHING_RESERVATIONS,
+    fetchingVal,
+  };
+};
 
 export const removeReservation = (reservation) => ({
   type: REMOVE_RESERVATION,

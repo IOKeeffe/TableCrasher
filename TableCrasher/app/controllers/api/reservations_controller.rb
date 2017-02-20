@@ -16,12 +16,12 @@ class Api::ReservationsController < ApplicationController
   end
 
   def show
-    debugger
     requested_reservation = Reservation.new(reservation_params)
+    requested_reservation.user_id = current_user
     if(params[:reservation][:search_term])
       @reservations = requested_reservation.search_reservations(params[:reservation][:search_term])
     else
-      @reservations = requested_reservation.adjacent_reservations
+      @reservations = {reservations_params[:restaurant_id] => requested_reservation.adjacent_reservations}
     end
     render :index
   end

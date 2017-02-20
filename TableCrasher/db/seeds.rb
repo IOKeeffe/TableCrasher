@@ -59,9 +59,9 @@ username: "guy",
 )
 
 6.times do |i|
-  City.create(
-  name: Faker::GameOfThrones.city,
-  image_url: city_picture_urls[i],
+    City.create(
+    name: Faker::GameOfThrones.city,
+    image_url: city_picture_urls[i],
   )
 end
 

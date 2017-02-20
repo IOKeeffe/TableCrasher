@@ -7,8 +7,10 @@ const mapStateToProps = (state, ownProps) => {
   return {
     reservations: state.reservations,
     possibleRestaurants: state.restaurants,
+    currentUser: state.session.currentUser,
     restaurant: ownProps.restaurant,
-};};
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchPotentialReservations: (search_params) => dispatch(fetchPotentialReservations(search_params)),
