@@ -33,14 +33,16 @@ class Restaurant < ApplicationRecord
 
   belongs_to :city
 
-    def self.search(search_term)
-    return Restaurant.all if search_term == ""
-    Restaurant
+  has_many :reservations
+
+  def self.search(search_term)
+    r = Restaurant
       .left_joins(:city)
       .where(
         "LOWER(restaurants.name) LIKE :search_term OR LOWER(cities.name) LIKE :search_term",
         search_term: "%#{search_term.downcase}%"
       )
-  end
+      r
+end
 
 end

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import SessionReducer from './session_reducer';
 import RestaurantReducer from './restaurants_reducer';
 import RestaurantDetailReducer from './restaurant_detail_reducer';
-import ReservationReducer from './reservation_reducer';
+import ReservationsReducer from './reservations_reducer';
 import CitiesReducer from './cities_reducer';
 
 export default combineReducers({
@@ -10,5 +10,5 @@ export default combineReducers({
   restaurants: RestaurantReducer,
   cities: CitiesReducer,
   restaurantDetail: RestaurantDetailReducer,
-  reservations: ReservationReducer
+  reservations: ReservationsReducer
 });

@@ -18,15 +18,21 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
 
+  attr_accessor :available
+
   def table_available?
-    return if customers_at_time + party_size < self.restaurant.seating
+    customers_at_time + party_size < self.restaurant.seating
+  end
+
+  def available_table
+    return if table_available?
     errors[:time_slot] << "No seating available at that time."
   end
 
   def adjacent_reservations
     potential_reservations = []
+
     5.times do |i|
-      tempId = i
       case i
         when 0
           newTime = self.time_slot - 30.minutes
@@ -39,51 +45,45 @@ class Reservation < ApplicationRecord
         when 4
           newTime = self.time_slot + 30.minutes
       end
-      new_reservation = Reservation.buildReservation(self, newTime, tempId)
-      if new_reservation.valid?
-        potential_reservations.push(new_reservation)
-      else
-        potential_reservations.push(nil)
+      new_reservation = Reservation.buildReservation(self, newTime)
+      if new_reservation.table_available?
+        new_reservation.available = true
       end
+      potential_reservations.push(new_reservation)
     end
     potential_reservations
   end
 
   def search_reservations(search_term)
     potential_reservations = []
-    restaurants = Restaurant.search(search_term).to_a
+    restaurants = Restaurant.search(search_term).includes(:reservations)
     restaurants.each do |restaurant|
-
       original_rez = Reservation.new(
         restaurant_id: restaurant.id,
         time_slot: self.time_slot,
         party_size: self.party_size,
       )
-
-      potential_reservations.concat(original_rez.adjacent_reservations)
+      potential_reservations.push(original_rez.adjacent_reservations)
     end
 
     potential_reservations
   end
 
-  def self.buildReservation(oldRez, new_time, tempId)
-    r = oldRez.clone
+  def self.buildReservation(oldRez, new_time)
+    r = Reservation.new
+    r.party_size = oldRez.party_size
+    r.restaurant_id = oldRez.restaurant_id
     r.time_slot = new_time
-    r.id = tempId
+    r.available = false
     r
   end
 
   private
   def customers_at_time
-    Reservation
-      .where.not(id: self.id)
-      .where(restaurant_id: restaurant_id)
-      .where(time_slot: time_slot)
-      .sum(:party_size)
-      # .where(<<-SQL, time_slot: time_slot)
-      #    NOT(DATEADD(HOUR, 1, time_slot) <  :time_slot)
-      #    OR (DATEADD(HOUR, 1, :time_slot) < time_slot)
-      # SQL
+    Reservation.where.not(id: self.id)
+    .where(restaurant_id: restaurant_id)
+    .where(time_slot: ((time_slot - 1.hour)..(time_slot + 1.hour)))
+    .sum(:party_size)
   end
 
 end

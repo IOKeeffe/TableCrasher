@@ -7,7 +7,6 @@ const RestaurantDetailReducer = (oldState = {restaurant: null, errors: []}, acti
 
   switch(action.type) {
   case RECEIVE_RESTAURANT:
-  debugger
     newState.errors = [];
     newState.restaurant = action.restaurant;
     return newState;
