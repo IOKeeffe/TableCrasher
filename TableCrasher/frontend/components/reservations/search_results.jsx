@@ -1,5 +1,6 @@
 import React from 'react';
 import RestaurantItemContainer from '../restaurant/restaurant_item_container';
+import ReservationFormContainer from './reservation_form_container';
 import { hashHistory, Link } from 'react-router';
 import { parseTime } from '../../util/utils';
 
@@ -38,42 +39,45 @@ export default class SearchResults extends React.Component {
 
   renderRestaurantList() {
     return (
-      <ul className="search-results">
-        {this.props.restaurants.map((restaurant, i) => (
-          <li className="restaurant-item" key={restaurant.id}>
-          <Link to={`restaurants/${restaurant.id}`} >
-            <img src={restaurant.image_url} alt={restaurant.name}/>
-          </Link>
-            <div className="restaurant-info">
-              <div className="info-header">
-              <Link to={`restaurants/${restaurant.id}`} >
-                <h2 className="restaurant-name">{restaurant.name}</h2>
-              </Link>
-                <div className={`price-${restaurant.price}`}>
-                    <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
-                    <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
-                    <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
-                    <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+      <div className="search-results-page">
+        <ReservationFormContainer isSearchForm={true} />
+        <ul className="search-results">
+          {this.props.restaurants.map((restaurant, i) => (
+            <li className="restaurant-item" key={restaurant.id}>
+            <Link to={`restaurants/${restaurant.id}`} >
+              <img src={restaurant.image_url} alt={restaurant.name}/>
+            </Link>
+              <div className="restaurant-info">
+                <div className="info-header">
+                <Link to={`restaurants/${restaurant.id}`} >
+                  <h2 className="restaurant-name">{restaurant.name}</h2>
+                </Link>
+                  <div className={`price-${restaurant.price}`}>
+                      <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                      <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                      <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                      <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                    </div>
                   </div>
+
+                <h2 className="category">{restaurant.category}</h2>
+                <ul className="reservation-list">
+                  {this.props.reservations[i].map((reservation,j) => {
+                    return(
+                      <li key={j} className="reservations-time" onClick={this.reservationClick(reservation.time_slot, restaurant.id)}>
+                        {parseTime(reservation.time_slot)}
+                      </li>
+                    );
+                  })}
+                </ul>
                 </div>
 
-              <h2 className="category">{restaurant.category}</h2>
-              <ul className="reservation-list">
-                {this.props.reservations[i].map((reservation,j) => {
-                  return(
-                    <li key={j} className="reservations-time" onClick={this.reservationClick(reservation.time_slot, restaurant.id)}>
-                      {parseTime(reservation.time_slot)}
-                    </li>
-                  );
-                })}
-              </ul>
-              </div>
-
-          </li>
-        )
-        )
-      }
-      </ul>
+            </li>
+          )
+          )
+        }
+        </ul>
+      </div>
     );
   }
 

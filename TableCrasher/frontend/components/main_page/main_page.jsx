@@ -17,7 +17,7 @@ export default class MainPage extends React.Component {
   render() {
     return (
       <div className="main-page">
-        <ReservationFormContainer />
+        <ReservationFormContainer isSearchForm={true} />
         <div className="content-holder">
             <SignInFormContainer />
             <SignUpFormContainer />

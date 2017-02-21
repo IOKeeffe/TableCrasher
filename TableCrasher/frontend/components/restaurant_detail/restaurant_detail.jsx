@@ -29,7 +29,7 @@ export default class RestaurantDetail extends React.Component {
                 <RestaurantItem restaurant={restaurant} />
               </section>
               <section className="reservation-form">
-                <ReservationFormContainer restaurant={restaurant} />
+                <ReservationFormContainer restaurant={restaurant} isSearchForm={false} />
               </section>
               <section className="restaurant-info">
                 <h2>{`About ${restaurant.name}`}</h2>

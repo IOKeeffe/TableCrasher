@@ -61,7 +61,7 @@ export default class ReservationForm extends React.Component {
   }
 
   renderReservations() {
-    if( this.props.reservations.reservations && this.props.reservations.reservations instanceof Array ){
+    if( !this.props.isSearchForm ){
       return(<ul className="reservation-list">
         {this.props.reservations.reservations.map((reservation,i) => {
           return (
@@ -77,7 +77,7 @@ export default class ReservationForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if(this.props.restaurant) {
+    if(!this.props.isSearchForm) {
       this.props.fetchOnlyReservations({
         party_size: this.state.partySize,
         time_slot: combineDateAndTime(new Date(this.state.date), new Date(this.state.time)),
@@ -176,7 +176,7 @@ export default class ReservationForm extends React.Component {
             {reservationTimeOptions}
             </select>
 
-            <div className={`text-area ${this.state.selected==="text" ? "selected" : ""}`}>
+            <div className={`text-area ${this.state.selected==="text" ? "selected" : ""} ${this.props.isSearchForm ? "search-form" : ""} `}>
               <i className="fa fa-search fa-2x" aria-hidden="true"></i>
                 <input
                 type="text"
