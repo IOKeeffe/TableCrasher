@@ -39,6 +39,7 @@ User.delete_all
 City.delete_all
 Restaurant.delete_all
 Reservation.delete_all
+Review.delete_all
 
 User.create(
   username: "guest",
@@ -87,6 +88,10 @@ end
   8.times do
     gal.push(food_picture_urls.sample)
   end
+  name = "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}"
+  until Restaurant.find_by(name: name).nil? do
+    name = "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}"
+  end
   cat = ["American", "Mexican", "Italian", "Indian", "Chinese", "French", "BBQ", "Vegetarian"].sample
   article = cat[0].in?(["A","E","I","O","U"]) ? "An" : "A"
   owner = User.all.sample
@@ -105,5 +110,16 @@ end
     image_url: restaurant_picture_urls.sample,
     price: (1..4).to_a.sample,
     owner_id: owner.id,
+  )
+end
+
+40.times do
+  user = User.all.sample.id
+  restaurant = Restaurant.all.sample.id
+  review = Review.create(
+    body: Faker::Hipster.paragraph,
+    user_id: user,
+    restaurant_id: restaurant,
+    rating: (1..5).to_a.sample,
   )
 end
