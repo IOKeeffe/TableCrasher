@@ -6,13 +6,13 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const REMOVE_RESTAURANT = "REMOVE_RESTAURANT";
 
 export const fetchAllRestaurants = () => dispatch => {
-  return RestaurantApiUtil.receiveRestaurants()
+  return RestaurantApiUtil.fetchRestaurants()
   .then(restaurants => dispatch(receiveRestaurants(restaurants)),
         errors => {dispatch(receiveErrors(errors));});
 };
 
 export const fetchRestaurant = id => dispatch => {
-  return RestaurantApiUtil.receiveRestaurant(id)
+  return RestaurantApiUtil.fetchRestaurant(id)
   .then(restaurant => dispatch(receiveRestaurant(restaurant)),
         errors => {dispatch(receiveErrors(errors));});
 };

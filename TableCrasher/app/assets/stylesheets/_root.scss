@@ -1,9 +1,7 @@
 #root {
   display: flex;
   flex-flow: column;
-  height: 100%;
   justify-content: flex-start;
-  width: 100%;
 }
 
 #home-div {
@@ -12,10 +10,9 @@
   display: flex;
   flex-direction: column;
   font-family: $source-sans;
-  height: 100%;
+  // height: 100%;
   justify-content: flex-start;
   position: absolute;
-  width: 100%;
 }
 
 div[class^="price"] {
@@ -51,10 +48,11 @@ div[class^="price"] {
 }
 
 .main-page {
+  align-items: center;
+  justify-content: flex-start;
   background-color: $lightest-grey;
   display: flex;
   flex-direction:column;
-  height: 100%;
   left: 0;
   position: relative;
   width: 100%;
@@ -64,83 +62,6 @@ div[class^="price"] {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 90vh;
   justify-content: flex-start;
   width: 100%;
-}
-
-.search-form-cont {
-  background-color: $white;
-  display: flex;
-  flex-flow: column;
-
-  // left: 15%;
-  height: 25%;
-  margin-left: 8%;
-  width: 84%;
-  h1 {
-    font-family: $source-sans;
-    font-size: 31px;
-    font-weight: 400;
-    margin: 0;
-    padding-left: 40px;
-    padding-top: 46px;
-    padding-bottom: 20px;
-  }
-}
-
-.search-form {
-  color: $light-grey;
-  display: flex;
-  height: 50px;
-  justify-content: flex-end;
-  margin: 0 0 0 0;
-  padding-right: 5.5%;
-  width: 100%;
-
-
-  .text-area {
-    align-items: center;
-    background-color: $white;
-    border: 1px solid $light-grey;
-    display: flex;
-    justify-content: flex-start;
-    transition: .2s;
-    width: 295px;
-
-
-
-
-    .fa {
-      margin: 16px;
-    }
-
-    input {
-      border: 0;
-      height: 100%;
-      width: 100%;
-
-      &:focus {
-        color: $grey;
-        outline: none;
-      }
-
-    }
-
-  }
-
-  .selected {
-    border: 1px solid #60b2d0;
-  }
-
-  .submit {
-    background-color: $red;
-    border: 0;
-    transition: .3s;
-    width: 155px;
-
-    &:hover {
-      background-color: $red-hover;
-    }
-  }
 }

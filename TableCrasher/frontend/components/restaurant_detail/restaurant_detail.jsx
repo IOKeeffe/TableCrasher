@@ -1,5 +1,6 @@
 import React from 'react';
 import RestaurantItem from '../restaurant/restaurant_item';
+import ReservationFormContainer from '../reservations/reservation_form_container';
 
 export default class RestaurantDetail extends React.Component {
   constructor(props) {
@@ -9,6 +10,10 @@ export default class RestaurantDetail extends React.Component {
 
   componentDidMount() {
     this.props.fetchRestaurant(this.props.id);
+  }
+
+  componentWillUnmount() {
+    this.props.unmountRestaurant();
   }
 
   render() {
@@ -23,15 +28,18 @@ export default class RestaurantDetail extends React.Component {
               <section className="restaurant-index-header">
                 <RestaurantItem restaurant={restaurant} />
               </section>
+              <section className="reservation-form">
+                <ReservationFormContainer restaurant={restaurant} isSearchForm={false} />
+              </section>
               <section className="restaurant-info">
                 <h2>{`About ${restaurant.name}`}</h2>
                 <p>{restaurant.description}</p>
               </section>
-              <section className="restaurant-detail-gallery">
+              <section className="gallery-container">
                 <h2>Gallery</h2>
-                <ul className="gallery">
+                <ul className="gallery-list">
                   {this.props.restaurant.gallery.map((pictureUrl, idx) => {
-                    return(<li className="gallery-pic" key={idx}><img src={pictureUrl} /></li>);
+                    return(<li className="gallery-item restaurant-gallery-item" key={idx}><img src={pictureUrl} /></li>);
                   })}
                 </ul>
               </section>
