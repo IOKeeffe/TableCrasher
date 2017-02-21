@@ -6,6 +6,10 @@
   // position: relative;
   width: 84%;
 
+  .text-area.no-text {
+    display:none;
+  }
+  
   .favorites-banner {
     background-color: $black;
     position: absolute;

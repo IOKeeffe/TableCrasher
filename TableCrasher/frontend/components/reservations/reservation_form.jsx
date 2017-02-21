@@ -28,9 +28,17 @@ export default class ReservationForm extends React.Component {
   }
 
   renderErrors() {
-    if( this.state.errorMessages ) {
+    if( this.state.errorMessages.length > 0 ) {
       return (<ul className="error-messages">
           {this.state.errorMessages.map((error, i) => {
+            return (<li key={i}>{error}</li>);
+          })}
+        </ul>
+      );
+    }
+    if( this.props.errorMessages.responseJSON ) {
+      return (<ul className="error-messages">
+          {this.props.errorMessages.responseJSON.map((error, i) => {
             return (<li key={i}>{error}</li>);
           })}
         </ul>
@@ -61,7 +69,7 @@ export default class ReservationForm extends React.Component {
   }
 
   renderReservations() {
-    if( !this.props.isSearchForm ){
+    if( !this.props.isSearchForm && this.props.reservations.reservations ){
       return(<ul className="reservation-list">
         {this.props.reservations.reservations.map((reservation,i) => {
           return (
@@ -176,7 +184,7 @@ export default class ReservationForm extends React.Component {
             {reservationTimeOptions}
             </select>
 
-            <div className={`text-area ${this.state.selected==="text" ? "selected" : ""} ${this.props.isSearchForm ? "search-form" : ""} `}>
+            <div className={`text-area ${this.state.selected==="text" ? "selected" : ""} ${this.props.isSearchForm ? "search-form-text" : "no-text"} `}>
               <i className="fa fa-search fa-2x" aria-hidden="true"></i>
                 <input
                 type="text"
