@@ -2,20 +2,23 @@
 #
 # Table name: restaurants
 #
-#  id          :integer          not null, primary key
-#  name        :string           not null
-#  address     :string           not null
-#  state       :string           not null
-#  zip_code    :string           not null
-#  category    :string           not null
-#  description :text             not null
-#  image_url   :string           not null
-#  price       :string           not null
-#  city_id     :integer          not null
-#  owner_id    :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  gallery     :string           default("{}"), is an Array
+#  id           :integer          not null, primary key
+#  name         :string           not null
+#  address      :string           not null
+#  state        :string           not null
+#  zip_code     :string           not null
+#  category     :string           not null
+#  description  :text             not null
+#  image_url    :string           not null
+#  price        :string           not null
+#  city_id      :integer          not null
+#  owner_id     :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  gallery      :string           default("{}"), is an Array
+#  seating      :integer          default("20"), not null
+#  opening_time :time             default("17:30:18.901609"), not null
+#  closing_time :time             default("17:30:19.008907"), not null
 #
 
 class Restaurant < ApplicationRecord
@@ -30,14 +33,16 @@ class Restaurant < ApplicationRecord
 
   belongs_to :city
 
-    def self.search(search_term)
-    return Restaurant.all if search_term == ""
-    Restaurant
+  has_many :reservations
+
+  def self.search(search_term)
+    r = Restaurant
       .left_joins(:city)
       .where(
         "LOWER(restaurants.name) LIKE :search_term OR LOWER(cities.name) LIKE :search_term",
         search_term: "%#{search_term.downcase}%"
       )
-  end
+      r
+end
 
 end

@@ -34,6 +34,7 @@ category          | string    | not null
 description       | text      | not null
 image_url         | string    | not null
 price             | string    | not null
+seating           | integer   | not null
 city_id           | integer   | not null, foreign key (references cities), indexed
 owner_id          | integer   | not null, foreign key (references users), indexed
 

@@ -6,10 +6,8 @@ export default ({city, fetchCityRestaurants}) => {
   };
 
   return (
-  <li className="city-item" onClick={() => {cityClick(city.id);}}>
-      <div className="img-div" >
+  <li className="gallery-item" onClick={() => {cityClick(city.id);}}>
         <img src={city.imageUrl} alt={city.name} />
-      </div>
       <div className="text-div">
         <h2>{city.name}</h2>
         <h3>{city.restaurantCount} Restaurants</h3>

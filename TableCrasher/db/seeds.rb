@@ -38,6 +38,8 @@ food_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restauran
 User.delete_all
 City.delete_all
 Restaurant.delete_all
+Reservation.delete_all
+
 User.create(
   username: "guest",
   password: "starwars",
@@ -57,9 +59,9 @@ username: "guy",
 )
 
 6.times do |i|
-  City.create(
-  name: Faker::GameOfThrones.city,
-  image_url: city_picture_urls[i],
+    City.create(
+    name: Faker::GameOfThrones.city,
+    image_url: city_picture_urls[i],
   )
 end
 
@@ -96,6 +98,9 @@ end
     category: cat,
     city_id: City.all.sample.id,
     gallery: gal,
+    opening_time: "11:00:00",
+    closing_time: "23:00:00",
+    seating: 20 + rand(31),
     description: "#{article} #{cat} restaurant specializing in locavore fare, from head chef #{owner.f_name} #{owner.l_name}",
     image_url: restaurant_picture_urls.sample,
     price: (1..4).to_a.sample,

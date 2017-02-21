@@ -1,0 +1,157 @@
+.text-area {
+  display:none;
+}
+.text-area.search-form {
+  display: inherit;
+}
+.reservation-list {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 5px;
+  padding: 15px 0;
+
+  li {
+    background-color: $red;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 6px;
+    padding: 5px 15px;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+  }
+}
+
+.search-form-cont {
+  background-color: $white;
+  box-shadow: 0 2px 2px 0 $shadow;
+  display: flex;
+  flex-flow: column;
+
+  // left: 15%;
+  height: 25%;
+  padding-bottom: 3%;
+  padding-left: 3%;
+  width: 84%;
+
+  h1 {
+    font-family: $source-sans;
+    font-size: 31px;
+    font-weight: 400;
+    margin: 0;
+    padding-bottom: 20px;
+    padding-top: 25px;
+  }
+}
+
+.error-messages {
+  li {
+    color: red;
+    list-style: none;
+    margin-bottom: 5px;
+  }
+}
+
+.search-form {
+  color: $light-grey;
+  display: flex;
+  height: 50px;
+  justify-content: flex-start;
+  margin: 0 0 0 0;
+  padding-right: 5.5%;
+  width: 100%;
+
+  select, input {
+    background-color: white;
+    border: 1px solid $light-grey;
+    border-right: 0;
+    border-radius: 0;
+    color: $grey;
+    outline: none;
+    padding-left: 15px;
+    transition: .2s;
+    -webkit-appearance: none;
+    width: 25%;
+  }
+
+  &:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+
+  .text-area {
+    align-items: center;
+    background-color: $white;
+    border: 1px solid $light-grey;
+    display: flex;
+    justify-content: flex-start;
+    transition: .2s;
+    width: 312px;
+
+
+
+
+    .fa {
+      margin: 16px;
+    }
+
+    input {
+      border: 0;
+      height: 100%;
+      width: 100%;
+
+      &:focus {
+        color: $grey;
+        outline: none;
+      }
+
+    }
+
+  }
+
+  .selected {
+    border: 1px solid #60b2d0;
+  }
+
+  .submit {
+    background-color: $red;
+    border: 0;
+    color: $white;
+    transition: .3s;
+    width: 155px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+  }
+}
+
+.search-results-page {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  h1 {
+    display: none;
+  }
+  .error-messages {
+    display: none;
+  }
+  .search-form-cont {
+    height: auto;
+    padding: 0;
+    width: 100%;
+  }
+  .search-form {
+    padding: 0;
+  }
+
+}
