@@ -1,5 +1,9 @@
 import merge from 'lodash/merge';
-import { RECEIVE_RESERVATION, RECEIVE_RESERVATIONS, REMOVE_RESERVATION, FETCHING_RESERVATIONS } from '../actions/reservation_actions';
+import { RECEIVE_RESERVATION,
+  RECEIVE_RESERVATIONS,
+  REMOVE_RESERVATION,
+  FETCHING_RESERVATIONS,
+  CHANGE_RESERVED_STATUS } from '../actions/reservation_actions';
 
 export default (oldState = {reservations: null, fetching: false}, action) => {
   Object.freeze(oldState);

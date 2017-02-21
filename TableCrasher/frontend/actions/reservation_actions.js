@@ -5,6 +5,7 @@ export const RECEIVE_RESERVATION = 'RECEIVE_RESERVATION';
 export const RECEIVE_RESERVATIONS = 'RECEIVE_RESERVATIONS';
 export const REMOVE_RESERVATION = 'REMOVE_RESERVATION';
 export const FETCHING_RESERVATIONS = 'FETCHING_RESERVATIONS';
+export const CHANGE_RESERVED_STATUS = 'CHANGE_RESERVED_STATUS';
 
 export const fetchOnlyReservations = (reservation) => dispatch => {
   dispatch(fetching(true));
@@ -23,12 +24,14 @@ export const fetchRestaurantsAndReservations = (reservation) => dispatch => {
   });
 };
 
+
+
 export const fetchUserReservations = () => dispatch => {
   return ReservationApiUtil.fetchUserReservations().then(reservations => dispatch(receiveReservations(reservations)));
 };
 
 export const createReservation = reservation => dispatch => {
-  return ReservationApiUtil.createReservation(reservation).then(reservation => {debugger; return dispatch(receiveReservation(reservation))});
+  return ReservationApiUtil.createReservation(reservation).then(reservation => {return dispatch(receiveReservation(reservation));});
 };
 
 export const updateReservation = reservation => dispatch => {
@@ -49,6 +52,13 @@ export const receiveReservation = reservation => {
 export const receiveReservations = (reservations) => {
   return {type: RECEIVE_RESERVATIONS,
     reservations};
+};
+
+export const changeReservedStatus = (status) => {
+  return {
+    type: CHANGE_RESERVED_STATUS,
+    status
+  };
 };
 
 export const fetching = (fetchingVal) => {

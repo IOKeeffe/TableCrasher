@@ -14,8 +14,8 @@ export default class CityIndex extends React.Component {
   render() {
     if(this.props.cities) {
       return (
-        <section className="city-index">
-          <ul className="city-list">
+        <section className="gallery-container">
+          <ul className="gallery-list">
             {
               this.props.cities.slice(0,6).map((city) => {
                 return (<CityIndexItem key={city.id} city={city} fetchCityRestaurants={this.props.fetchCityRestaurants}/>);

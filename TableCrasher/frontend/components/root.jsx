@@ -3,15 +3,15 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import RestaurantDetailContainer from './restaurant_detail/restaurant_detail_container';
-import Main from './main';
+import MainPageContainer from './main_page/main_page_container';
 
-import SearchResultsContainer from './reservations/search_results_container'
+import SearchResultsContainer from './reservations/search_results_container';
 
 const Root = ({store}) => (
     <Provider store={store}>
       <Router history = { hashHistory }>
         <Route path="/" component={ App }>
-          <IndexRoute component={ Main }/>
+          <IndexRoute component={ MainPageContainer }/>
           <Route path="/restaurants/:restaurantId" component={RestaurantDetailContainer} />
           <Route path="/search-results" component={SearchResultsContainer} />
         </Route>

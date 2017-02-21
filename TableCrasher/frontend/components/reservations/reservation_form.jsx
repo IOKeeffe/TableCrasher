@@ -14,8 +14,8 @@ export default class ReservationForm extends React.Component {
       this.setState({[field]: e.target.value});
     };
   }
-  componentWillUnmount() {
 
+  componentWillUnmount() {
   }
 
   changeFocus(input) {
@@ -39,9 +39,8 @@ export default class ReservationForm extends React.Component {
   }
 
   renderSuccess() {
-    if( !this.props.restaurant && this.props.reservations ) {
-      return (<h2>Reservation confirmed!</h2>
-      );
+    if( this.props.reservation_confirmed ) {
+      return (<h2>Reservation confirmed!</h2>);
     }
   }
 
@@ -53,7 +52,11 @@ export default class ReservationForm extends React.Component {
       party_size: this.state.partySize,
     };
     return(e) => {
-      this.props.createReservation(reservation).then((success) => {hashHistory.push("/");});
+      let changeReservedStatus=this.props.changeReservedStatus;
+      this.props.createReservation(reservation).then((success) => {
+        changeReservedStatus(true);
+        hashHistory.push("/");
+      });
     };
   }
 

@@ -1,0 +1,39 @@
+.search-results {
+  margin: 25px 0;
+  padding: 25px;
+
+  .restaurant-item {
+    background-color: white;
+    cursor: auto;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+    padding: 25px;
+
+
+    .restaurant-info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 25px;
+
+      .info-header {
+        align-items: baseline;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        h2 {
+          margin: 0;
+        }
+
+      }
+
+      .reservation-list {
+        margin: 5px 5px 5px 0;
+      }
+      .reservation-list :first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
