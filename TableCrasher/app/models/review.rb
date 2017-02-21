@@ -11,10 +11,10 @@
 #  updated_at    :datetime         not null
 #
 
-require 'test_helper'
+class Review < ApplicationRecord
+  validates :body, :user_id, :restaurant_id, :rating, presence: true
 
-class ReviewTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  belongs_to :user
+  belongs_to :restaurant
+
 end
