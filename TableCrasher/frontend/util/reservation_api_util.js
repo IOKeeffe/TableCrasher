@@ -1,4 +1,4 @@
-export const receivePotentialReservations = (reservation) => {
+export const fetchPotentialReservations = (reservation) => {
   return $.ajax({
     method: "GET",
     url: `api/reservations/${reservation.id}`,
@@ -6,7 +6,7 @@ export const receivePotentialReservations = (reservation) => {
   });
 };
 
-export const receiveUserReservations = () => {
+export const fetchUserReservations = () => {
   return $.ajax({
     method: "GET",
     url: `api/reservations`,

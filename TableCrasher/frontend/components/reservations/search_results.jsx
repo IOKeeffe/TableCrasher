@@ -1,17 +1,11 @@
 import React from 'react';
 import RestaurantItemContainer from '../restaurant/restaurant_item_container';
 import { hashHistory, Link } from 'react-router';
+import { parseTime } from '../../util/utils';
 
 export default class SearchResults extends React.Component {
   constructor(props) {
     super(props);
-    this.parseTime = this.parseTime.bind(this);
-  }
-
-  componentDidMount() {
-    // debugger
-  }
-  componentWillReceiveProps(newProps) {
   }
 
   buildRestaurantItem(restaurant_reservation) {
@@ -22,29 +16,16 @@ export default class SearchResults extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+    this.props.unmountReservations();
+  }
+
   handleClick() {
     // this.
   }
 
   renderReservationLinks(i) {
     // return
-  }
-
-  parseTime(timeSlot) {
-    let time = new Date(timeSlot);
-
-    let minutes = time.getMinutes();
-    if (minutes === 0) {
-      minutes = "00";
-    }
-    let hours = time.getHours();
-    let meridian = "AM";
-    if (hours > 12 ) {
-      hours -= 12;
-      meridian = "PM";
-    }
-    return `${hours}:${minutes} ${meridian}`;
-
   }
 
   render() {
@@ -63,17 +44,18 @@ export default class SearchResults extends React.Component {
                   <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
                   <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
                 </div>
-                <ul className="reservation-list">
-                </ul>
+
               <h2 className="category">{restaurant.category}</h2>
               </Link>
-              {this.props.reservations[i].map((reservation,j) => {
-                return(
-                  <li key={j}>
-                  {this.parseTime(reservation.time_slot)}
-                  </li>
-                );
-              })}
+              <ul>
+                {this.props.reservations[i].map((reservation,j) => {
+                  return(
+                    <li key={j}>
+                      {parseTime(reservation.time_slot)}
+                    </li>
+                  );
+                })}
+              </ul>
             </li>
           )
           )

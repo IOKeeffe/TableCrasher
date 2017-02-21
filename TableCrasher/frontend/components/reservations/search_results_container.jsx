@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SearchResults from './search_results';
-import {fetchPotentialReservations, createReservation} from '../../actions/reservation_actions';
+import {fetchPotentialReservations, createReservation, receiveReservations} from '../../actions/reservation_actions';
 import {fetchRestaurant} from '../../actions/restaurant_actions';
 import { selectAllRestaurants } from '../../reducers/selectors';
 
@@ -13,5 +13,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchRestaurant: id => dispatch(fetchRestaurant(id)),
+  unmountReservations: () => dispatch(receiveReservations(null)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

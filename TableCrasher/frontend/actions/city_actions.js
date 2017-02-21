@@ -5,14 +5,14 @@ export const RECEIVE_CITY = 'RECEIVE_CITY';
 export const RECEIVE_CITIES = 'RECEIVE_CITIES';
 
 export const fetchCityRestaurants = id => dispatch => {
-  return CityApiUtil.receiveCityRestaurants(id).then(city => {
+  return CityApiUtil.fetchCityRestaurants(id).then(city => {
     dispatch(receiveCity(city));
     dispatch(receiveRestaurants(city.restaurants));
   });
 };
 
 export const fetchCities = () => dispatch => {
-  return CityApiUtil.receiveCities().then(cities => dispatch(receiveCities(cities)));
+  return CityApiUtil.fetchCities().then(cities => dispatch(receiveCities(cities)));
 };
 
 export const receiveCity = (city) => {
