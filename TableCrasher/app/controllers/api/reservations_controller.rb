@@ -20,10 +20,11 @@ class Api::ReservationsController < ApplicationController
     requested_reservation.user_id = current_user
     if(params[:reservation][:search_term])
       @reservations = requested_reservation.search_reservations(params[:reservation][:search_term])
+      render :multiple_restaurant_reservations
     else
-      @reservations = {reservations_params[:restaurant_id] => requested_reservation.adjacent_reservations}
+      @reservations = requested_reservation.adjacent_reservations
+      render :restaurant_reservations
     end
-    render :index
   end
 
   def update

@@ -1,3 +1,31 @@
+.restaurant-detail .search-form {
+  .text-area {
+    display: none;
+  }
+}
+
+.reservation-list {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 5px;
+  padding: 15px 0;
+
+  li {
+    background-color: $red;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 6px;
+    padding: 5px 15px;
+
+    &:hover {
+      background-color: $red-hover;
+    }
+  }
+}
+
 .search-form-cont {
   background-color: $white;
   box-shadow: 0 2px 2px 0 $shadow;
@@ -32,7 +60,7 @@
   color: $light-grey;
   display: flex;
   height: 50px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin: 0 0 0 0;
   padding-right: 5.5%;
   width: 100%;
