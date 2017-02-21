@@ -35,11 +35,11 @@ export default class RestaurantDetail extends React.Component {
                 <h2>{`About ${restaurant.name}`}</h2>
                 <p>{restaurant.description}</p>
               </section>
-              <section className="restaurant-detail-gallery">
+              <section className="gallery-container">
                 <h2>Gallery</h2>
-                <ul className="gallery">
+                <ul className="gallery-list">
                   {this.props.restaurant.gallery.map((pictureUrl, idx) => {
-                    return(<li className="gallery-pic" key={idx}><img src={pictureUrl} /></li>);
+                    return(<li className="gallery-item restaurant-gallery-item" key={idx}><img src={pictureUrl} /></li>);
                   })}
                 </ul>
               </section>

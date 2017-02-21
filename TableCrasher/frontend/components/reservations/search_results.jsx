@@ -20,49 +20,79 @@ export default class SearchResults extends React.Component {
     this.props.unmountReservations();
   }
 
-  handleClick() {
-    // this.
+  reservationClick(time_slot, rest_id) {
+    const reservation = {
+      time_slot: time_slot,
+      restaurant_id: rest_id,
+      user_id: this.props.currentUser.id,
+      party_size: this.props.reservations[0][0].party_size,
+    };
+    return(e) => {
+      let changeReservedStatus = this.props.changeReservedStatus;
+      this.props.createReservation(reservation).then((success) => {
+        changeReservedStatus(true);
+        hashHistory.push("/");
+      });
+    };
   }
 
-  renderReservationLinks(i) {
-    // return
-  }
-
-  render() {
-    if(!this.props.fetching){
-      return (
-        <div>
-        <ul>
-          {this.props.restaurants.map((restaurant, i) => (
-            <li className="restaurant-item" key={restaurant.id}>
+  renderRestaurantList() {
+    return (
+      <ul className="search-results">
+        {this.props.restaurants.map((restaurant, i) => (
+          <li className="restaurant-item" key={restaurant.id}>
+          <Link to={`restaurants/${restaurant.id}`} >
+            <img src={restaurant.image_url} alt={restaurant.name}/>
+          </Link>
+            <div className="restaurant-info">
+              <div className="info-header">
               <Link to={`restaurants/${restaurant.id}`} >
-              <img src={restaurant.image_url} alt={restaurant.name}/>
-              <h2 className="restaurant-name">{restaurant.name}</h2>
-              <div className={`price-${restaurant.price}`}>
-                  <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
-                  <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
-                  <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
-                  <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                <h2 className="restaurant-name">{restaurant.name}</h2>
+              </Link>
+                <div className={`price-${restaurant.price}`}>
+                    <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                    <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                    <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                    <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
+                  </div>
                 </div>
 
               <h2 className="category">{restaurant.category}</h2>
-              </Link>
-              <ul>
+              <ul className="reservation-list">
                 {this.props.reservations[i].map((reservation,j) => {
                   return(
-                    <li key={j}>
+                    <li key={j} className="reservations-time" onClick={this.reservationClick(reservation.time_slot, restaurant.id)}>
                       {parseTime(reservation.time_slot)}
                     </li>
                   );
                 })}
               </ul>
-            </li>
-          )
-          )
-        }
-        </ul>
-        </div>
-      );
+              </div>
+
+          </li>
+        )
+        )
+      }
+      </ul>
+    );
+  }
+
+  render() {
+    if(!this.props.fetching){
+      if(this.props.restaurants.length > 0 && this.props.reservations.length > 1) {
+        return (
+          <div>
+            {this.renderRestaurantList()}
+          </div>
+        );
+      }
+      else {
+        return (
+          <div className="errorContainer">
+            <h2>Sorry, we couldn't find any restaurants matching your search.</h2>
+          </div>
+        );
+      }
     }
     else {
       return (<div><i className="fa fa-spinner fa-spin fa-4x" aria-hidden="true"></i></div>);

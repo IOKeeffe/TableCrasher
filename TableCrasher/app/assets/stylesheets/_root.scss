@@ -53,7 +53,6 @@ div[class^="price"] {
   background-color: $lightest-grey;
   display: flex;
   flex-direction:column;
-  height: 100%;
   left: 0;
   position: relative;
   width: 100%;
@@ -63,7 +62,6 @@ div[class^="price"] {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 90vh;
   justify-content: flex-start;
   width: 100%;
 }

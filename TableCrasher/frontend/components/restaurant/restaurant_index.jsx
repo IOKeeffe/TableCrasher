@@ -1,5 +1,6 @@
 import React from 'react';
 import RestaurantItem from './restaurant_item';
+import {shuffle} from 'lodash';
 import {hashHistory} from 'react-router';
 
 export default class RestaurantIndex extends React.Component {
@@ -17,7 +18,7 @@ export default class RestaurantIndex extends React.Component {
   }
 
   render() {
-    const restaurantItems = this.props.restaurants.slice(0, 4).map((restaurant) =>{
+    const restaurantItems = _.shuffle(this.props.restaurants).slice(0, 4).map((restaurant) =>{
       return (
         <RestaurantItem restaurant={restaurant} key={restaurant.id} onClick={(e) => {e.preventDefault(); return this.redirect(restaurant.id);}}/>
       );});
