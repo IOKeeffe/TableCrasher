@@ -36,7 +36,9 @@ export const receiveCurrentUser = (user) => ({
   user,
 });
 
-export const receiveErrors = (errors) => ({
-  type: RECEIVE_ERRORS,
-  errors,
-});
+export const receiveErrors = (errors) => {
+  return {
+    type: RECEIVE_ERRORS,
+    errors,
+  };
+};

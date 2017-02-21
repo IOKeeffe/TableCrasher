@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.currentUser,
     reservation_confirmed: state.status.reservationConfirmed,
     restaurant: ownProps.restaurant,
+    errorMessages: state.session.errors,
   };
 };
 
