@@ -7,6 +7,7 @@ import {fetchOnlyReservations, fetchRestaurantsAndReservations,
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    isSearchForm: ownProps.isSearchForm,
     reservations: state.reservations,
     currentUser: state.session.currentUser,
     reservation_confirmed: state.status.reservationConfirmed,

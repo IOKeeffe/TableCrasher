@@ -1,9 +1,9 @@
-.restaurant-detail .search-form {
-  .text-area {
-    display: none;
-  }
+.text-area {
+  display:none;
 }
-
+.text-area.search-form {
+  display: inherit;
+}
 .reservation-list {
   color: white;
   display: flex;
@@ -91,7 +91,7 @@
     display: flex;
     justify-content: flex-start;
     transition: .2s;
-    width: 295px;
+    width: 312px;
 
 
 
@@ -131,4 +131,27 @@
       background-color: $red-hover;
     }
   }
+}
+
+.search-results-page {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  h1 {
+    display: none;
+  }
+  .error-messages {
+    display: none;
+  }
+  .search-form-cont {
+    height: auto;
+    padding: 0;
+    width: 100%;
+  }
+  .search-form {
+    padding: 0;
+  }
+
 }
