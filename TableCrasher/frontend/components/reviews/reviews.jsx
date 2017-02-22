@@ -41,12 +41,12 @@ export default class Reviews extends React.Component {
   renderDeleteButton(review) {
     if(this.state.checkingDelete === review) {
       return (<div>Really Delete?
-        <button onClick={(e) => {this.props.deleteReview(review.id);}}>Delete</button>
-        <button onClick={(e) => {this.setState({checkingDelete: null});}}>Cancel</button>
+        <a className="delete" onClick={(e) => {this.props.deleteReview(review.id);}}>Delete</a>
+        <a className="cancel" onClick={(e) => {this.setState({checkingDelete: null});}}>Cancel</a>
       </div>);
     }
     else {
-      return (<button onClick={(e) => {return this.setState({checkingDelete: review});}}>Delete Review</button>);
+      return (<button className="red-button" onClick={(e) => {return this.setState({checkingDelete: review});}}>Delete Review</button>);
     }
   }
 
@@ -55,7 +55,7 @@ export default class Reviews extends React.Component {
     if(review.user.username === this.props.currentUser.username && this.props.currentPage === 'restaurant') {
       return(
         <div className="button-div" >
-          <button onClick={this.updateReview(review)}>Update Review</button>
+          <button className="red-button" onClick={this.updateReview(review)}>Update Review</button>
           {this.renderDeleteButton(review)}
         </div>
       );
@@ -77,17 +77,17 @@ export default class Reviews extends React.Component {
   renderStaticReview(review) {
     return (
       <li className='review' key={review.id}>
-      <div className='header'>
+      <div className='review-header'>
+        <div className='rating'>
+          <StarRatingComponent
+          name={`rating-${review.id}`}
+          starCount={5}
+          value={review.rating}
+          />
+        </div>
         <h2 className='title'>
           {this.props.currentPage === 'restaurant' ? review.user.username : review.restaurant.name}
         </h2>
-        <div className='rating'>
-          <StarRatingComponent
-                      name={`rating-${review.id}`}
-                      starCount={5}
-                      value={review.rating}
-                  />
-        </div>
         </div>
       <p>{review.body}</p>
       {this.renderUserButtons(review)}
@@ -98,7 +98,7 @@ export default class Reviews extends React.Component {
   renderReviewButton() {
     if(this.state.creatingNewReview || this.props.currentPage === 'user') return;
     return (
-      <button onClick={(e) => this.setState({creatingNewReview: true})}>Add a review</button>
+      <button className="red-button" onClick={(e) => this.setState({creatingNewReview: true})}>Add a review</button>
     );
   }
 
