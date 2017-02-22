@@ -130,6 +130,6 @@ end
   restaurant = Restaurant.all.sample
   Favorite.create(
     user_id: user.id,
-    restaurant_id: restauarant.id
+    restaurant_id: restaurant.id
   )
 end

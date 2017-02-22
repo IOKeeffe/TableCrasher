@@ -6,7 +6,7 @@ export default (oldState = {cities: [], currentCity: null}, action) => {
   let newState = merge({}, oldState);
   switch(action.type) {
   case RECEIVE_CITY:
-    newState.currentCity = action.city.id;
+    newState.currentCity = action.city;
     return newState;
   case RECEIVE_CITIES:
     newState.cities = action.cities;

@@ -22,7 +22,7 @@ export const createRestaurant = (restaurant) => {
 export const searchRestaurants = (search_term) => {
   return $.ajax({
     method: "GET",
-    url: "api/restaurants/search",
+    url: "api/restaurants",
     data: {search_term},
   });
 };

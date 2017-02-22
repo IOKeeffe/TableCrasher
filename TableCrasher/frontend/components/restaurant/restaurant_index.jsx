@@ -11,25 +11,34 @@ export default class RestaurantIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllRestaurants();
+    if(this.props.currentUser) {
+      this.props.fetchFavorites();
+    }
   }
 
   redirect(id) {
     hashHistory.push(`/restaurants/${id}`);
   }
 
+  renderRestaurantItems() {
+    return (
+      _.shuffle(this.props.restaurants).map((restaurant) =>{
+        return (
+          <RestaurantItem favorites={this.props.favorites} restaurant={restaurant} key={restaurant.id} onClick={(e) => {e.preventDefault(); return this.redirect(restaurant.id);}}/>
+        );})
+    );
+  }
+
   render() {
-    const restaurantItems = _.shuffle(this.props.restaurants).slice(0, 4).map((restaurant) =>{
-      return (
-        <RestaurantItem restaurant={restaurant} key={restaurant.id} onClick={(e) => {e.preventDefault(); return this.redirect(restaurant.id);}}/>
-      );});
+    let cityName = this.props.currentCity ? this.props.currentCity.city.name : '';
+
     return (
         <section className="restaurant-index">
           <section className="restaurant-index-header">
-            <h2>Restaurants</h2>
+            <h2>{`${cityName} Restaurants`}</h2>
           </section>
           <ul className="restaurant-list">
-
-            {restaurantItems}
+            {this.renderRestaurantItems()}
           </ul>
         </section>
     );
