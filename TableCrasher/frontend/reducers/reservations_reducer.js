@@ -10,7 +10,7 @@ export default (oldState = {reservations: null, fetching: false}, action) => {
   let newState = merge({}, oldState);
   switch(action.type) {
   case RECEIVE_RESERVATION:
-    newState.reservations = action.reservation;
+    newState.reservations.push(action.reservation);
     return newState;
   case RECEIVE_RESERVATIONS:
     newState.reservations = action.reservations;

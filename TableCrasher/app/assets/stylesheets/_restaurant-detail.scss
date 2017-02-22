@@ -9,7 +9,7 @@
   .text-area.no-text {
     display:none;
   }
-  
+
   .favorites-banner {
     background-color: $black;
     position: absolute;
@@ -71,6 +71,11 @@
       width: 146px;
     }
 
+  }
+
+
+  .gallery-container {
+    margin: 0;
   }
 
 }

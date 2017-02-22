@@ -7,6 +7,8 @@ class Header extends React.Component {
     this.renderSignInForm = this.renderSignInForm.bind(this);
     this.renderSignUpForm = this.renderSignUpForm.bind(this);
     this.guestLogIn = this.guestLogIn.bind(this);
+    this.logOut = this.logOut.bind(this);
+
   }
 
   renderSignInForm(e) {
@@ -24,6 +26,11 @@ class Header extends React.Component {
   renderSignUpForm(e) {
     e.preventDefault();
     this.props.signingUp();
+  }
+
+  logOut() {
+    this.props.logOut();
+    hashHistory.push("/");
   }
 
   render() {
@@ -47,7 +54,7 @@ class Header extends React.Component {
       return (
         <div className="auth-section">
         <h3>Hi, {this.props.currentUser.f_name}</h3>
-        <a onClick={this.props.logOut} className="log">Log Out</a>
+        <a onClick={this.logOut} className="log">Log Out</a>
         </div>
       );
     }
