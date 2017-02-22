@@ -37,7 +37,7 @@ export const deleteRestaurant = id => dispatch => {
 
 export const searchRestaurants = search_term => dispatch => {
   return RestaurantApiUtil.searchRestaurants(search_term)
-  .then(restaurants => dispatch(receiveRestaurants(restaurants)),
+  .then(restaurants => {return dispatch(receiveRestaurants(restaurants));},
         errors => dispatch(receiveErrors(errors)));
 };
 

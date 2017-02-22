@@ -16,6 +16,7 @@ class Api::ReservationsController < ApplicationController
   end
 
   def show
+    @average_reviews = Review.group('restaurant_id').average('rating')
     requested_reservation = Reservation.new(reservation_params)
     requested_reservation.user_id = current_user
     if(params[:reservation][:search_term])

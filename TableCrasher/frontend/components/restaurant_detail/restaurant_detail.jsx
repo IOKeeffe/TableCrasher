@@ -6,15 +6,42 @@ import ReviewsContainer from '../reviews/reviews_container';
 export default class RestaurantDetail extends React.Component {
   constructor(props) {
     super(props);
-    // this.renderPictures = this.renderPictures.bind(this);
+    this.toggleFavorite = this.toggleFavorite.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchRestaurant(this.props.id);
+      this.props.fetchFavorites();
   }
 
   componentWillUnmount() {
     this.props.unmountRestaurant();
+  }
+
+  toggleFavorite() {
+    let favorite = this.props.favorites[this.props.restaurant.id];
+    if(favorite) {
+      this.props.deleteFavorite(favorite.id);
+    }
+    else {
+      this.props.createFavorite({restaurant_id: this.props.restaurant.id});
+    }
+  }
+
+  renderFavoriteButton() {
+    if (this.props.favorites && this.props.favorites[this.props.restaurant.id]) {
+      return (<div><button className="red-button" onClick={this.toggleFavorite}>
+      <i className="fa fa-heart favorited" aria-hidden="true"></i>
+        Favorited
+        </button></div>
+        );
+    }
+    else {
+      return(<div><button className="red-button" onClick={this.toggleFavorite}>
+        <i className="fa fa-heart-o" aria-hidden="true"></i>
+        Add to favorites
+      </button></div>)
+    }
   }
 
   render() {
@@ -27,7 +54,8 @@ export default class RestaurantDetail extends React.Component {
             </section>
             <section className='info-box'>
               <section className='restaurant-index-header'>
-                <RestaurantItem restaurant={restaurant} />
+                <RestaurantItem restaurant={restaurant} favorites={null} />
+                {this.renderFavoriteButton()}
               </section>
               <section className='reservation-form'>
                 <ReservationFormContainer restaurant={restaurant} isSearchForm={false} />
