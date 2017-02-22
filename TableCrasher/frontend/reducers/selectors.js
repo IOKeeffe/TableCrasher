@@ -9,5 +9,6 @@ export const selectAllCities = (state) => {
 };
 
 export const selectAllReviews = (state) => {
-  return values(state.reviews);
+  let v = values(state.reviews);
+  return v;
 };
