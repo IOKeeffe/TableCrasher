@@ -1,7 +1,8 @@
 import React from 'react';
-import RestaurantItemContainer from '../restaurant/restaurant_item_container';
+import RestaurantItem from '../restaurant/restaurant_item';
 import ReservationFormContainer from './reservation_form_container';
 import { hashHistory, Link } from 'react-router';
+import StarRatingComponent from 'react-star-rating-component';
 import { parseTime } from '../../util/utils';
 
 export default class SearchResults extends React.Component {
@@ -12,7 +13,7 @@ export default class SearchResults extends React.Component {
   buildRestaurantItem(restaurant_reservation) {
     return (
       <div>
-        <RestaurantItemContainer restaurant={this.props.fetchRestaurant(restaurant_reservation[0].id)}/>
+        <RestaurantItem restaurant={this.props.fetchRestaurant(restaurant_reservation[0].id)}/>
       </div>
     );
   }
@@ -52,6 +53,12 @@ export default class SearchResults extends React.Component {
                 <Link to={`restaurants/${restaurant.id}`} >
                   <h2 className="restaurant-name">{restaurant.name}</h2>
                 </Link>
+                <StarRatingComponent
+                  name={`rating-${restaurant.id}`}
+                  starCount={5}
+                  value={restaurant.average_rating}
+                  editing={false}
+                />
                   <div className={`price-${restaurant.price}`}>
                       <i className="fa fa-usd fa-lg" aria-hidden="true"></i>
                       <i className="fa fa-usd fa-lg" aria-hidden="true"></i>

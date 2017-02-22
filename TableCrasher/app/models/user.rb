@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :restaurants
+  has_many :favorites
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

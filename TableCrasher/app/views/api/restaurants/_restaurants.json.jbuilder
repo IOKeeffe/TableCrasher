@@ -1,9 +1,8 @@
-averageReviews = Review.group('restaurant_id').average('rating')
 
 restaurants.each do |restaurant|
-  json.set! restaurant.name do
-    average = averageReviews[restaurant.id].to_s
+  average = (@average_reviews[restaurant.id] || 1).ceil
+  json.set! restaurant.id do
     json.extract! restaurant, :id, :name, :image_url, :category, :price
-    json.average_rating average.to_i
+    json.average_rating average
   end
 end

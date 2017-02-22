@@ -51,8 +51,10 @@ export default class Reviews extends React.Component {
           onStarClick={this.handleStarClick}
           />
         </div>
-        <textarea value={this.state.body} onChange={this.update} />
-        <input type="submit"/>
+        <div className="edit-form">
+          <textarea value={this.state.body} onChange={this.update} />
+          <input className="red-button" type="submit"/>
+        </div>
       </form>
     );
   }

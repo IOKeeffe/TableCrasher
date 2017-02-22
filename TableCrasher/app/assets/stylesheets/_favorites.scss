@@ -1,0 +1,16 @@
+.fa-heart {
+  display: none;
+}
+
+.fa-heart.favorite-restaurant {
+  color: $red;
+  display: inherit;
+};
+.fa-heart.favorited {
+  color: $white;
+  display: inherit;
+  margin-right: 5px;
+};
+.fa-heart-o {
+  margin-right: 5px;
+}

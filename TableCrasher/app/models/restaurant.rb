@@ -35,7 +35,8 @@ class Restaurant < ApplicationRecord
 
   has_many :reservations
   has_many :reviews
-
+  has_many :favorites
+  
   def self.search(search_term)
     r = Restaurant
       .left_joins(:city)
@@ -44,6 +45,6 @@ class Restaurant < ApplicationRecord
         search_term: "%#{search_term.downcase}%"
       )
       r
-end
+  end
 
 end

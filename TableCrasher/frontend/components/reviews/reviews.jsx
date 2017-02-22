@@ -96,7 +96,10 @@ export default class Reviews extends React.Component {
   }
 
   renderReviewButton() {
-    if(this.state.creatingNewReview || this.props.currentPage === 'user') return;
+    if(this.state.creatingNewReview
+      || this.props.currentPage === 'user'
+      || this.state.editingReview
+      || this.state.checkingDelete) return;
     return (
       <button className="red-button" onClick={(e) => this.setState({creatingNewReview: true})}>Add a review</button>
     );
