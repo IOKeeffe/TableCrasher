@@ -17,8 +17,8 @@
 #  updated_at   :datetime         not null
 #  gallery      :string           default("{}"), is an Array
 #  seating      :integer          default("20"), not null
-#  opening_time :time             default("17:30:18.901609"), not null
-#  closing_time :time             default("17:30:19.008907"), not null
+#  opening_time :time             default("17:30:18"), not null
+#  closing_time :time             default("17:30:19"), not null
 #
 
 require 'test_helper'

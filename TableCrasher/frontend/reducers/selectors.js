@@ -7,3 +7,8 @@ export const selectAllRestaurants = (state) => {
 export const selectAllCities = (state) => {
   return values(state.cities.cities);
 };
+
+export const selectAllReviews = (state) => {
+  let v = values(state.reviews);
+  return v;
+};
