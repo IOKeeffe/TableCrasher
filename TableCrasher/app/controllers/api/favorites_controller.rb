@@ -1,8 +1,8 @@
 class Api::FavoritesController < ApplicationController
 
   def create
-    @favorite = Favorite.new(favorites_params)
-    @favorite.owner_id = current_user.id
+    @favorite = Favorite.new(favorite_params)
+    @favorite.user_id = current_user.id
     if @favorite.save
       render :show
     else
@@ -11,7 +11,7 @@ class Api::FavoritesController < ApplicationController
   end
 
   def index
-    @favorites = Favorite.where(user_id: current_user.id).includes(:restaurants)
+    @favorites = Favorite.where(user_id: current_user.id)
     render :index
   end
 
@@ -21,13 +21,13 @@ class Api::FavoritesController < ApplicationController
   end
 
   def destroy
-    @favorite = Favorite.find_by(id: params[:id])
-    @favorite.delete
+    @favorite = Favorite.find_by(id: params[:id], user_id: current_user.id)
+    Favorite.delete(@favorite)
     render :show
   end
 
   private def favorite_params
-    params.require(:favorite).permit(:user_id, :restuarant_id)
+    params.require(:favorite).permit(:restaurant_id)
   end
 
 end

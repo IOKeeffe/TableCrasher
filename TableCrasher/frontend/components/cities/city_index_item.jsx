@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default ({city, fetchCityRestaurants}) => {
-  const cityClick = (e) => {
-    fetchCityRestaurants(e);
+  const cityClick = (cityId) => {
+    fetchCityRestaurants(cityId);
   };
 
   return (

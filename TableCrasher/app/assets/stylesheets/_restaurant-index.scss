@@ -18,7 +18,7 @@
   display: flex;
   flex-flow: row;
   justify-content: space-between;
-  overflow: hidden;
+  overflow-x: scroll;
   padding-top: 22px;
   position: relative;
 }
