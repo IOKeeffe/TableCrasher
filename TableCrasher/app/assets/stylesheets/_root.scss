@@ -58,6 +58,20 @@ div[class^="price"] {
   width: 100%;
 }
 
+.red-button {
+  background-color: $red;
+  border: 0;
+  border-radius: 4px;
+  color: $white;
+  margin: 0 2px;
+  transition: .3s;
+  width: 155px;
+
+  &:hover {
+    background-color: $red-hover;
+  }
+}
+
 .content-holder {
   align-items: center;
   display: flex;

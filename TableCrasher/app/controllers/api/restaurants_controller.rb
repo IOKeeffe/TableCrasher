@@ -15,12 +15,15 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.all.includes(:reviews)
+
     render :index
   end
 
   def show
-    @restaurant = Restaurant.find_by(id: params[:id])
+    restaurants = Restaurant.includes(:reviews)
+    @restaurant = restaurants.find_by(id: params[:id])
+    @averageReviews = Review.group('restaurant_id').average('rating')
     render :show
   end
 

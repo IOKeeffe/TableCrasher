@@ -44,13 +44,13 @@ export default class Reviews extends React.Component {
     return (
       <form className='review-form' onSubmit={this.submitForm}>
         <div className='rating'>
+          <StarRatingComponent
+          name="rating"
+          starCount={5}
+          value={this.state.rating}
+          onStarClick={this.handleStarClick}
+          />
         </div>
-        <StarRatingComponent
-                    name="rating"
-                    starCount={5}
-                    value={this.state.rating}
-                    onStarClick={this.handleStarClick}
-                />
         <textarea value={this.state.body} onChange={this.update} />
         <input type="submit"/>
       </form>
