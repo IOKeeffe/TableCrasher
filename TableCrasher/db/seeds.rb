@@ -41,24 +41,6 @@ Restaurant.delete_all
 Reservation.delete_all
 Review.delete_all
 
-User.create(
-  username: "guest",
-  password: "starwars",
-  f_name: "Guest",
-  l_name: "Guest",
-  email_address: "guest@guest.com",
-  city_id: 1,
-)
-
-User.create(
-username: "guy",
-  password: "starwars",
-  f_name: "Guy",
-  l_name: "Von Trapp",
-  email_address: "guest@guest.com",
-  city_id: 1,
-)
-
 6.times do |i|
     City.create(
     name: Faker::GameOfThrones.city,
@@ -83,7 +65,7 @@ end
 end
 
 
-20.times do
+40.times do
   gal = []
   8.times do
     gal.push(food_picture_urls.sample)
@@ -113,6 +95,25 @@ end
   )
 end
 
+
+User.create(
+  username: "guest",
+  password: "starwars",
+  f_name: "Guest",
+  l_name: "Guest",
+  email_address: "guest@guest.com",
+  city_id: City.all.sample.id,
+)
+
+User.create(
+username: "guy",
+  password: "starwars",
+  f_name: "Guy",
+  l_name: "Von Trapp",
+  email_address: "guest@guest.com",
+  city_id: City.all.sample.id,
+)
+
 40.times do
   user = User.all.sample.id
   restaurant = Restaurant.all.sample.id
@@ -121,5 +122,14 @@ end
     user_id: user,
     restaurant_id: restaurant,
     rating: (1..5).to_a.sample,
+  )
+end
+
+40.times do
+  user = User.all.sample
+  restaurant = Restaurant.all.sample
+  Favorite.create(
+    user_id: user.id,
+    restaurant_id: restauarant.id
   )
 end
