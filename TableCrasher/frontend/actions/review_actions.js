@@ -27,7 +27,7 @@ export const fetchReview = (id) => dispatch => {
 };
 
 export const updateReview = (review) => dispatch => {
-  return ReviewApiUtil.updatereview(review).then(review => {
+  return ReviewApiUtil.updateReview(review).then(review => {
     dispatch(receiveReview(review));
   });
 };

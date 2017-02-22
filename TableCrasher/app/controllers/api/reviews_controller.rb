@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.owner_id = current_user.id
+    @review.user_id = current_user.id
     if @review.save
       render :show
     else
@@ -26,7 +26,7 @@ class Api::ReviewsController < ApplicationController
 
   def update
     @review = Review.find_by(id: params[:id])
-    if @review.save
+    if @review.update_attributes(review_params)
       render :show
     else
       render json: @review.errors.full_messages, status: 422
@@ -36,8 +36,7 @@ class Api::ReviewsController < ApplicationController
   def destroy
     @review = Review.find_by(id: params[:id])
     @review.delete
-    @reviews = Review.all
-    render :index
+    render :show
   end
 
 
