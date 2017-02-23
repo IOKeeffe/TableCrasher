@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
+import { updateUserDetails } from '../../actions/session_actions';
+import ProfileDetails from './profile_details';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    fetching: state.reservations.fetching,
-    reservations: state.reservations.reservations,
+    user: state.session.currentUser
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserReservations: () => dispatch(fetchUserReservations()),
-  updateReservation: (reservation) => dispatch(updateReservation(reservation)),
-  deleteReservation: (id) => dispatch(deleteReservation(id)),
+  updateUserDetails: (user) => dispatch(updateUserDetails(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileReservations);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileDetails);

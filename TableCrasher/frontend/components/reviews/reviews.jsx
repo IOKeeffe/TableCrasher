@@ -41,7 +41,7 @@ export default class Reviews extends React.Component {
 
   renderDeleteButton(review) {
     if(this.state.checkingDelete === review) {
-      return (<div>Really Delete?
+      return (<div>Really Delete? <br />
         <a className="delete" onClick={(e) => {this.props.deleteReview(review.id);}}>Delete</a>
         <a className="cancel" onClick={(e) => {this.setState({checkingDelete: null});}}>Cancel</a>
       </div>);

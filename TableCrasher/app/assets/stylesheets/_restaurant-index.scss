@@ -13,6 +13,17 @@
   width: 75%;
 }
 
+.title {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  i {
+    margin-left: 10px;
+  }
+}
+
 .restaurant-list {
   // align-items: center;
   display: flex;

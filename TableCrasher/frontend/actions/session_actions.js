@@ -21,6 +21,12 @@ export const signUp = (user) => dispatch => {
             error => dispatch(receiveErrors(error)));
 };
 
+export const updateUserDetails = (user) => dispatch => {
+  return SessionApiUtil.updateUser(user)
+    .then(user => dispatch(receiveCurrentUser(user)),
+          error => dispatch(receiveErrors(error)));
+};
+
 export const renderSignInForm = (signingIn) => ({
   type: SIGNING_IN,
   signingIn,
