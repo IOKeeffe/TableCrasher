@@ -54,16 +54,19 @@ export default class ReservationForm extends React.Component {
     }
   }
 
-  reservationClick(time_slot) {
-    const reservation = {
-      time_slot: time_slot,
+  reservationClick(reservation) {
+    if(!reservation.available) {
+      return;
+    }
+    const new_reservation = {
+      time_slot: reservation.time_slot,
       restaurant_id: this.props.restaurant.id,
       user_id: this.props.currentUser.id,
       party_size: this.state.partySize,
     };
     return(e) => {
       let changeReservedStatus=this.props.changeReservedStatus;
-      this.props.createReservation(reservation).then((success) => {
+      this.props.createReservation(new_reservation).then((success) => {
         changeReservedStatus(true);
         hashHistory.push("/");
       });
@@ -75,7 +78,9 @@ export default class ReservationForm extends React.Component {
       return(<ul className="reservation-list">
         {this.props.reservations.reservations.map((reservation,i) => {
           return (
-            <li key={i} className="reservation-time" onClick={this.reservationClick(reservation.time_slot)}>
+            <li key={i} className={`reservation-time
+              ${reservation.available ? "" : "unavailable"}`}
+            onClick={this.reservationClick(reservation)}>
               {parseTime(reservation.time_slot)}
             </li>
           );

@@ -5,35 +5,35 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-city_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/141001144835-innovative-cities-philly-1024x576",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/201411-a-americas-favorite-cities-new-york",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/1680856-poster-1280-10-smartest-european-cities-shutterstock-78340003-1",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/cities",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/tokyo",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/chicago-1"]
+city_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/city_images/141001144835-innovative-cities-philly-1024x576.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/201411-a-americas-favorite-cities-new-york.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/1680856-poster-1280-10-smartest-european-cities-shutterstock-78340003-1.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/cities.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/tokyo.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/chicago-1.jpg"]
 
-restaurant_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/scandic-sundsvall-city-restaurant-verket-10_madk5z.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-c-michiel-van-der-eerde-amsterdam-2_yuyi7g.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-carousel-1_lykh1n.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-939435_960_720_mbge7l.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_w9l2lj.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Benchmark_Restaurant_Dining_Room_Photographed_by_Evan_Sung_wg3rxq.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/Restaurant_1_crga5j.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/lockwood-chicago-restaurant-bar-2_io6opj.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/home_restaurants-1_n1wljo.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_2_ssljno.jpg",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant_jn7rsq.jpg"]
+restaurant_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/scandic-sundsvall-city-restaurant-verket-10.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant-c-michiel-van-der-eerde-amsterdam-2.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant-carousel-1.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant-939435_960_720.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/Benchmark_Restaurant_Dining_Room_Photographed_by_Evan_Sung.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/Restaurant_1.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/lockwood-chicago-restaurant-bar-2.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/home_restaurants-1.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant_2.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant.jpg"]
 
-food_picture_urls = ["http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/so24",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/st07",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/restaurant-offerings-cta",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/pizza-junk-food-600",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download_1",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download_3",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/images",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download_2",
-  "http://res.cloudinary.com/dydv1ehma/image/upload/Restaurants/download_4"]
+food_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/food_images/so24.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/st07.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/restaurant-offerings-cta.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/pizza-junk-food-600.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/download_1.jpeg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/download_3.jpeg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/images.jpeg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/download.jpeg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/download_2.jpeg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/download_4.jpeg"]
 
 User.delete_all
 City.delete_all
@@ -44,7 +44,7 @@ Review.delete_all
 6.times do |i|
     City.create(
     name: Faker::GameOfThrones.city,
-    image_url: city_picture_urls[i],
+    image: city_picture_urls[i],
   )
 end
 
@@ -64,35 +64,38 @@ end
   )
 end
 
+restaurants = []
 
-40.times do
-  gal = []
-  8.times do
-    gal.push(food_picture_urls.sample)
-  end
+20.times do
   name = "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}"
   until Restaurant.find_by(name: name).nil? do
     name = "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}"
   end
   cat = ["American", "Mexican", "Italian", "Indian", "Chinese", "French", "BBQ", "Vegetarian"].sample
   article = cat[0].in?(["A","E","I","O","U"]) ? "An" : "A"
+  pic_url = restaurant_picture_urls.sample
   owner = User.all.sample
-  Restaurant.create(
+  restaurants.push(Restaurant.create(
     name: "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}",
     address: Faker::Address.street_address,
     state: "New York",
     zip_code: 11205,
     category: cat,
     city_id: City.all.sample.id,
-    gallery: gal,
     opening_time: "11:00:00",
     closing_time: "23:00:00",
     seating: 20 + rand(31),
     description: "#{article} #{cat} restaurant specializing in locavore fare, from head chef #{owner.f_name} #{owner.l_name}",
-    image_url: restaurant_picture_urls.sample,
+    image: pic_url,
     price: (1..4).to_a.sample,
-    owner_id: owner.id,
-  )
+    owner_id: owner.id
+  ))
+end
+
+restaurants.each do |restaurant|
+  8.times do
+    g = GalleryImage.create({image: food_picture_urls.sample, restaurant_id: restaurant.id})
+  end
 end
 
 

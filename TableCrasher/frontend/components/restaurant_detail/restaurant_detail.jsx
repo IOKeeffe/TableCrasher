@@ -11,7 +11,8 @@ export default class RestaurantDetail extends React.Component {
 
   componentDidMount() {
     this.props.fetchRestaurant(this.props.id);
-      this.props.fetchFavorites();
+    this.props.fetchFavorites();
+    this.props.receiveReservations();
   }
 
   componentWillUnmount() {
@@ -50,7 +51,7 @@ export default class RestaurantDetail extends React.Component {
       return (
           <section className='restaurant-detail'>
             <section className='restaurant-image'>
-              <img src={restaurant.image_url} alt={`${restaurant.name} logo`} />
+              <img src={restaurant.image.thumb} alt={`${restaurant.name} logo`} />
             </section>
             <section className='info-box'>
               <section className='restaurant-index-header'>
@@ -67,8 +68,8 @@ export default class RestaurantDetail extends React.Component {
               <section className='gallery-container'>
                 <h2>Gallery</h2>
                 <ul className='gallery-list'>
-                  {this.props.restaurant.gallery.map((pictureUrl, idx) => {
-                    return(<li className='gallery-item restaurant-gallery-item' key={idx}><img src={pictureUrl} /></li>);
+                  {this.props.restaurant.gallery.map((gallery_object, idx) => {
+                    return(<li className='gallery-item restaurant-gallery-item' key={idx}><img src={gallery_object.image} /></li>);
                   })}
                 </ul>
               </section>

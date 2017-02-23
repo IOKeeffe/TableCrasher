@@ -37,7 +37,7 @@ class Header extends React.Component {
     return (
       <div className="header">
         <section className="img-cont">
-          <img src="http://res.cloudinary.com/dydv1ehma/image/upload/v1487193104/h47eu6r9tb2y8wbehuo2.png"
+          <img src="//s3.amazonaws.com/table-crasher-pro/assets/Table_Crasher_logo_final.png"
           alt="logo"
           onClick={
             () => hashHistory.push("/")
@@ -55,6 +55,7 @@ class Header extends React.Component {
         <div className="auth-section">
         <h3>Hi, {this.props.currentUser.f_name}</h3>
         <a onClick={this.logOut} className="log">Log Out</a>
+        <Link className="log" to={'profile/reservations'}>My Profile</Link>
         </div>
       );
     }
