@@ -3,7 +3,8 @@
   json.set! city.id do
     json.id city.id
     json.name city.name
-    json.imageUrl city.image_url
+    json.image city.image(:large)
+
     json.restaurantCount restaurant_count
   end
 end

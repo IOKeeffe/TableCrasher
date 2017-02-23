@@ -22,9 +22,11 @@
 #
 
 class Restaurant < ApplicationRecord
-  validates :name, :address, :state, :category, :description, :image_url, :city_id, presence: true
-  validates_format_of :price, :with => /[1-4]/,
-                 :message => "Invalid Price"
+  validates :name, :address, :state, :category, :description, :city_id, presence: true
+  validates_format_of :price, :with => /[1-4]/, :message => "Invalid Price"
+
+  has_attached_file :image, default_url: "missing.png", styles: { thumb: '153x106>', square: '150x150>', large: '266x155>' }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :owner,
     class_name: "User",
@@ -36,7 +38,8 @@ class Restaurant < ApplicationRecord
   has_many :reservations
   has_many :reviews
   has_many :favorites
-  
+  has_many :gallery_images
+
   def self.search(search_term)
     r = Restaurant
       .left_joins(:city)

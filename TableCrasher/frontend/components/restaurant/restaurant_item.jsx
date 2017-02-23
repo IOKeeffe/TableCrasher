@@ -5,7 +5,7 @@ import StarRatingComponent from 'react-star-rating-component';
 export default (props) => {
   return (
     <li className="restaurant-item" onClick={props.onClick}>
-      <img src={props.restaurant.image_url} alt={props.restaurant.name}/>
+      <img src={props.restaurant.image.thumb} alt={props.restaurant.name}/>
       <i className={`fa fa-heart ${props.favorites && props.favorites[props.restaurant.id]?'favorite-restaurant':''}`} aria-hidden="true"></i>
       <h2 className="restaurant-name">{props.restaurant.name}</h2>
       <StarRatingComponent

@@ -1,5 +1,6 @@
 import React from 'react';
 import { parseTime, parseDate } from '../../util/utils';
+import { Link } from 'react-router';
 
 export default class ProfileReservations extends React.Component {
   constructor(props) {
@@ -45,11 +46,15 @@ export default class ProfileReservations extends React.Component {
             {reservations.map ((reservation) => {
               return (
               <li className="reservation-item" key={reservation.reservation.id}>
-                <section className="img-section">
-                  <img src={reservation.restaurant.image_url} />
-                </section>
+                <Link to={`restaurants/${reservation.restaurant.id}`}>
+                  <section className="img-section">
+                    <img src={reservation.restaurant.image_url} />
+                  </section>
+                </Link>
                 <section className="info">
-                  <h4>{reservation.restaurant.name}</h4>
+                  <Link to={`restaurants/${reservation.restaurant.id}`}>
+                    <h4>{reservation.restaurant.name}</h4>
+                  </Link>
                   <p>{parseTime(reservation.reservation.time_slot)}</p>
                   <p>{parseDate(reservation.reservation.time_slot)}</p>
                 </section>

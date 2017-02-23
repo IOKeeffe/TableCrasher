@@ -24,6 +24,8 @@ class Api::RestaurantsController < ApplicationController
     @average_reviews = Review.group('restaurant_id').average('rating')
     restaurants = Restaurant.includes(:reviews)
     @restaurant = restaurants.find_by(id: params[:id])
+    @average = (@average_reviews[@restaurant.id] || 1).ceil
+    @gallery = @restaurant.gallery_images
     render :show
   end
 

@@ -50,6 +50,14 @@
     margin: 0 13px;
   }
 
+  .unavailable {
+    background-color: $grey;
+    cursor: default;
+    &:hover {
+      background-color: $grey
+    }
+  }
+
   .restaurant-index-header  {
     .restaurant-item {
       cursor: auto;
