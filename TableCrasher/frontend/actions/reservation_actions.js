@@ -19,7 +19,9 @@ export const fetchRestaurantsAndReservations = (reservation) => dispatch => {
   dispatch(fetching(true));
   return ReservationApiUtil.fetchPotentialReservations(reservation).then(({reservations, restaurants}) => {
     dispatch(receiveReservations(reservations));
-    dispatch(receiveRestaurants(restaurants));
+    if(restaurants) {
+      dispatch(receiveRestaurants(restaurants));
+    }
     dispatch(fetching(false));
   });
 };
@@ -28,8 +30,7 @@ export const fetchRestaurantsAndReservations = (reservation) => dispatch => {
 
 export const fetchUserReservations = () => dispatch => {
   return ReservationApiUtil.fetchUserReservations().then(reservations =>
-    { dispatch(receiveReservations(reservations));
-    }
+  { dispatch(receiveReservations(reservations));}
   );
 };
 

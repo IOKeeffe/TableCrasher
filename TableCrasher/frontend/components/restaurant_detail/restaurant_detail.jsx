@@ -41,7 +41,7 @@ export default class RestaurantDetail extends React.Component {
       return(<div><button className="red-button" onClick={this.toggleFavorite}>
         <i className="fa fa-heart-o" aria-hidden="true"></i>
         Add to favorites
-      </button></div>)
+      </button></div>);
     }
   }
 

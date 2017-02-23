@@ -130,8 +130,16 @@ export default class ReservationForm extends React.Component {
       time_slot: combineDateAndTime(new Date(this.state.date), new Date(this.state.time)),
       search_term: this.state.searchTerm,
       id: 1,
+    }).then((results) => {
+      // debugger
+      if(this.props.reservations.reservations) {
+        hashHistory.push("/search-results");
+      }
+      else {
+        this.setState({errorMessages: [`No results found for "${this.state.searchTerm}"`]});
+      }
     });
-    hashHistory.push("/search-results");
+
   }
 
   addMinutes(date, minutes) {

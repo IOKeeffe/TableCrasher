@@ -32,7 +32,8 @@ export default class RestaurantIndex extends React.Component {
   render() {
     let cityName = this.props.currentCity ? this.props.currentCity.city.name : '';
 
-    return (
+    if(!this.props.fetching) {
+      return (
         <section className="restaurant-index">
           <section className="restaurant-index-header">
             <h2>{`${cityName} Restaurants`}</h2>
@@ -40,7 +41,10 @@ export default class RestaurantIndex extends React.Component {
           <ul className="restaurant-list">
             {this.renderRestaurantItems()}
           </ul>
-        </section>
-    );
+        </section>);
+    }
+    else {
+      return (<div><i className="fa fa-spinner fa-spin fa-4x" aria-hidden="true"></i></div>);
+    }
   }
 }

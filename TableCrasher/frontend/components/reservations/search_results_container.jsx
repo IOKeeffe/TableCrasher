@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
     reservations: state.reservations.reservations,
     restaurants: selectAllRestaurants(state),
     currentUser: state.session.currentUser,
+    errorMessages: state.session.errorMesssages,
   };};
 
 const mapDispatchToProps = dispatch => ({
