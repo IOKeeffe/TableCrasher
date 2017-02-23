@@ -11,7 +11,9 @@
 
 class City < ApplicationRecord
   validates :name, presence: true, uniqueness: true
-  validates :image_url, presence: true
+
+  has_attached_file :image, default_url: "missing.png", styles: { large: '357x255>' }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :users
   has_many :restaurants
