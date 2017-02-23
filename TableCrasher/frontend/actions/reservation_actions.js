@@ -27,7 +27,10 @@ export const fetchRestaurantsAndReservations = (reservation) => dispatch => {
 
 
 export const fetchUserReservations = () => dispatch => {
-  return ReservationApiUtil.fetchUserReservations().then(reservations => dispatch(receiveReservations(reservations)));
+  return ReservationApiUtil.fetchUserReservations().then(reservations =>
+    { dispatch(receiveReservations(reservations));
+    }
+  );
 };
 
 export const createReservation = reservation => dispatch => {

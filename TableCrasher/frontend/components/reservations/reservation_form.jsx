@@ -1,6 +1,6 @@
 import React from 'react';
 import {hashHistory} from 'react-router';
-import { parseTime, combineDateAndTime } from '../../util/utils';
+import { parseTime, parseDate, combineDateAndTime } from '../../util/utils';
 export default class ReservationForm extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +48,9 @@ export default class ReservationForm extends React.Component {
 
   renderSuccess() {
     if( this.props.reservation_confirmed ) {
-      return (<h2>Reservation confirmed!</h2>);
+      let reservation = this.props.reservations.currentReservation;
+      let confirmationString = `Reservation at ${reservation.restaurant_name} at ${parseTime(reservation.time_slot)} on ${parseDate(reservation.time_slot)} confirmed!`;
+      return (<h2>{confirmationString}</h2>);
     }
   }
 
@@ -69,7 +71,7 @@ export default class ReservationForm extends React.Component {
   }
 
   renderReservations() {
-    if( !this.props.isSearchForm && this.props.reservations.reservations ){
+    if( !this.props.isSearchForm && this.props.reservations.reservations instanceof Array ){
       return(<ul className="reservation-list">
         {this.props.reservations.reservations.map((reservation,i) => {
           return (

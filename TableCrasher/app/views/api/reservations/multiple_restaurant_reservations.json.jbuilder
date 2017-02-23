@@ -1,9 +1,3 @@
-restaurant_ids = []
-@reservations.each do |restaurant_reservation|
-  restaurant_ids << restaurant_reservation[0].restaurant_id
-end
-
-restaurants = restaurant_ids.map do |id| Restaurant.find(id) end
 json.set! "reservations" do
   json.array! @reservations do |restaurant_reservations|
     json.array! restaurant_reservations do |reservation, j|
@@ -13,7 +7,7 @@ json.set! "reservations" do
 end
 
 json.set! "restaurants" do
-  restaurants.each do |restaurant|
+  @restaurants.each do |restaurant|
     average = (@average_reviews[restaurant.id] || 1).ceil
     json.set! restaurant.id do
       json.extract! restaurant, :id, :name, :image_url, :category, :price
