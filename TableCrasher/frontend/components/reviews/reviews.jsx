@@ -1,6 +1,7 @@
 import React from 'react';
 import StarRatingComponent from 'react-star-rating-component';
 import ReviewFormContainer from './review_form_container';
+import { loadingDiv } from '../../util/utils';
 
 export default class Reviews extends React.Component {
   constructor(props) {
@@ -120,7 +121,7 @@ export default class Reviews extends React.Component {
       );
     }
     else {
-      return(<div>Loading...</div>);
+      return(loadingDiv());
     }
   }
 }

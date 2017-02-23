@@ -28,7 +28,7 @@ class Api::ReservationsController < ApplicationController
   def show
     @average_reviews = Review.group('restaurant_id').average('rating')
     requested_reservation = Reservation.new(reservation_params)
-    requested_reservation.user_id = current_user
+    requested_reservation.user_id = current_user.id
     if(params[:reservation][:search_term])
       @reservations = requested_reservation.search_reservations(params[:reservation][:search_term])
       @restaurant_ids = []
@@ -54,7 +54,6 @@ class Api::ReservationsController < ApplicationController
   end
 
   def destroy
-    debugger
     @reservation = Reservation.includes(:restaurant).find_by(id: params[:id])
     @reservation.delete
     @restaurant = @reservation.restaurant

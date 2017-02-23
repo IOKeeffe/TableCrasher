@@ -2,6 +2,7 @@ import React from 'react';
 import RestaurantItem from './restaurant_item';
 import {shuffle} from 'lodash';
 import {hashHistory} from 'react-router';
+import { loadingDiv } from '../../util/utils';
 
 export default class RestaurantIndex extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ export default class RestaurantIndex extends React.Component {
         </section>);
     }
     else {
-      return (<div><i className="fa fa-spinner fa-spin fa-4x" aria-hidden="true"></i></div>);
+      return(loadingDiv());
     }
   }
 }
