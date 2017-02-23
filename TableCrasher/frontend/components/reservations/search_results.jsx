@@ -19,7 +19,7 @@ export default class SearchResults extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.unmountReservations();
+    // this.props.unmountReservations();
   }
 
   reservationClick(time_slot, rest_id) {
@@ -99,7 +99,7 @@ export default class SearchResults extends React.Component {
       }
       else {
         return (
-          <div className="errorContainer">
+          <div className='errorContainer'>
             <h2>Sorry, we couldn't find any restaurants matching your search.</h2>
           </div>
         );

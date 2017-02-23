@@ -12,6 +12,7 @@ export default class MainPage extends React.Component {
 
   componentWillUnmount() {
     this.props.changeReservedStatus(false);
+    this.props.receiveReservation(null);
   }
 
   render() {
