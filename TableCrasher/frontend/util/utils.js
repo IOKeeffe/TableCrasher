@@ -25,7 +25,7 @@ export const getWeekDay = (day_num) => {
   weekday[6] = "Saturday";
 
   return weekday[day_num];
-}
+};
 
 export const getMonth = (month_num) => {
   let month = new Array(12);
@@ -44,7 +44,7 @@ export const getMonth = (month_num) => {
   month[12] = "July";
 
   return month[month_num];
-}
+};
 
 export const parseDate = (timeSlot) => {
   let dateTime = new Date(timeSlot);
