@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const parseTime = (timeSlot) => {
   let time = new Date(timeSlot);
   let minutes = time.getMinutes();
@@ -66,4 +68,8 @@ export const combineDateAndTime = (date, time) => {
   const combined = new Date(dateString + ' ' + timeString);
 
   return combined;
+};
+
+export const loadingDiv = () => {
+  return (<div><i className="fa fa-spinner fa-spin fa-4x" aria-hidden="true"></i></div>);
 };

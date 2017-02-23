@@ -130,9 +130,9 @@ export default class ReservationForm extends React.Component {
       time_slot: combineDateAndTime(new Date(this.state.date), new Date(this.state.time)),
       search_term: this.state.searchTerm,
       id: 1,
-    }).then((results) => {
-      // debugger
-      if(this.props.reservations.reservations) {
+    })
+    .then((results) => {
+      if(this.props.reservations.reservations.length > 0) {
         hashHistory.push("/search-results");
       }
       else {

@@ -56,7 +56,7 @@ class Reservation < ApplicationRecord
 
   def search_reservations(search_term)
     potential_reservations = []
-    restaurants = Restaurant.search(search_term).includes(:reservations)
+    restaurants = Restaurant.includes(:reservations).search(search_term)
     restaurants.each do |restaurant|
       original_rez = Reservation.new(
         restaurant_id: restaurant.id,

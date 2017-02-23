@@ -3,7 +3,7 @@ import RestaurantItem from '../restaurant/restaurant_item';
 import ReservationFormContainer from './reservation_form_container';
 import { hashHistory, Link } from 'react-router';
 import StarRatingComponent from 'react-star-rating-component';
-import { parseTime } from '../../util/utils';
+import { parseTime, loadingDiv } from '../../util/utils';
 
 export default class SearchResults extends React.Component {
   constructor(props) {
@@ -46,7 +46,7 @@ export default class SearchResults extends React.Component {
           {this.props.restaurants.map((restaurant, i) => (
             <li className="restaurant-item" key={restaurant.id}>
             <Link to={`restaurants/${restaurant.id}`} >
-              <img src={restaurant.image_url} alt={restaurant.name}/>
+              <img src={restaurant.image.square} alt={restaurant.name}/>
             </Link>
               <div className="restaurant-info">
                 <div className="info-header">
@@ -90,7 +90,7 @@ export default class SearchResults extends React.Component {
 
   render() {
     if(!this.props.fetching){
-      if(this.props.restaurants.length > 0 && this.props.reservations.length > 1) {
+      if(this.props.restaurants.length > 0 && this.props.reservations.length > 0) {
         return (
           <div>
             {this.renderRestaurantList()}
@@ -106,7 +106,7 @@ export default class SearchResults extends React.Component {
       }
     }
     else {
-      return (<div><i className="fa fa-spinner fa-spin fa-4x" aria-hidden="true"></i></div>);
+      return (loadingDiv());
     }
   }
 }
