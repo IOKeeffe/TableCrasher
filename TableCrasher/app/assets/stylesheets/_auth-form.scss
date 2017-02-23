@@ -1,6 +1,11 @@
-.custom-modal {
+.fade in modal {
+  align-items: flex-start;
   display: flex;
   justify-content: center;
+}
+
+.custom-modal {
+  width: 23% !important;
 }
 
 .custom-modal .modal-content {
@@ -8,9 +13,7 @@
   box-shadow: none;
   display: flex;
   flex-flow: column;
-  height: auto;
   justify-content: center;
-  width: 60%;
 
 
   .modal-header {

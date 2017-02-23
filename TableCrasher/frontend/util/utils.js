@@ -14,6 +14,48 @@ export const parseTime = (timeSlot) => {
 
 };
 
+export const getWeekDay = (day_num) => {
+  let weekday = new Array(7);
+  weekday[0] =  "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+
+  return weekday[day_num];
+}
+
+export const getMonth = (month_num) => {
+  let month = new Array(12);
+  month[0] =  "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+  month[12] = "July";
+
+  return month[month_num];
+}
+
+export const parseDate = (timeSlot) => {
+  let dateTime = new Date(timeSlot);
+  let weekDay = getWeekDay(dateTime.getDay());
+  let date = dateTime.getDate();
+  let month = getMonth(dateTime.getMonth());
+
+  return `${weekDay}, ${month} ${date}`;
+
+};
+
 export const combineDateAndTime = (date, time) => {
   const timeString = time.getHours() + ':' + time.getMinutes() + ':00';
 

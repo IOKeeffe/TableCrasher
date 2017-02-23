@@ -1,8 +1,6 @@
 json.set! "reservations" do
-  json.array! @reservations do |restaurant_reservations|
-    json.array! restaurant_reservations do |reservation, j|
+  json.array! @reservations do |reservation|
       json.extract! reservation, :party_size, :time_slot, :restaurant_id, :available
-    end
   end
 end
 
