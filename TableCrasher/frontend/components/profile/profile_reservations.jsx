@@ -48,7 +48,7 @@ export default class ProfileReservations extends React.Component {
               <li className="reservation-item" key={reservation.reservation.id}>
                 <Link to={`restaurants/${reservation.restaurant.id}`}>
                   <section className="img-section">
-                    <img src={reservation.restaurant.image_url} />
+                    <img src={reservation.restaurant.image.thumb} />
                   </section>
                 </Link>
                 <section className="info">

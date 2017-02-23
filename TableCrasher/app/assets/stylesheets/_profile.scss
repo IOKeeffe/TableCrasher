@@ -35,7 +35,9 @@
     .info {
       align-self:flex-start;
       justify-content: flex-start;
-
+      p {
+        color: $black;
+      }
       p :first-child {
         margin-bottom: 10px
       }
@@ -72,4 +74,24 @@
       width: 150px;
     }
   }
+}
+.details {
+  label {
+    width: 60%;
+  }
+  .sign-up-form {
+    width: 100%;
+  }
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+  .auth-button {
+    margin-top: 15px;
+    width: 60%;
+  }
+  background-color: $white;
+  box-shadow: 0 2px 2px 0 $shadow;
+  padding: 25px;
+  width: 500px;
 }

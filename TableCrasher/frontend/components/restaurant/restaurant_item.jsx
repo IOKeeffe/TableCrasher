@@ -6,8 +6,10 @@ export default (props) => {
   return (
     <li className="restaurant-item" onClick={props.onClick}>
       <img src={props.restaurant.image.thumb} alt={props.restaurant.name}/>
-      <i className={`fa fa-heart ${props.favorites && props.favorites[props.restaurant.id]?'favorite-restaurant':''}`} aria-hidden="true"></i>
-      <h2 className="restaurant-name">{props.restaurant.name}</h2>
+      <div className="title">
+        <h2 className="restaurant-name">{props.restaurant.name}</h2>
+        <i className={`fa fa-heart ${props.favorites && props.favorites[props.restaurant.id]?'favorite-restaurant':''}`} aria-hidden="true"></i>
+      </div>
       <StarRatingComponent
         name={`rating-${props.restaurant.average_rating}`}
         starCount={5}
