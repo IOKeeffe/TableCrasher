@@ -14,9 +14,6 @@ class Api::ReservationsController < ApplicationController
   def index
     @average_reviews = Review.group('restaurant_id').average('rating')
     @reservations = Reservation.where(user_id: current_user.id).where("time_slot > ?", Time.now).includes(:restaurant)
-    @restaurant_ids = getRestaurantsIdsByReservations(@reservations)
-    @restaurants = @restaurant_ids.map do |id| Restaurant.find(id) end
-
     render :user_restaurant_reservations
   end
 
@@ -57,10 +54,11 @@ class Api::ReservationsController < ApplicationController
   end
 
   def destroy
-    @reservation = Reservation.find_by(id: params[:id])
+    debugger
+    @reservation = Reservation.includes(:restaurant).find_by(id: params[:id])
     @reservation.delete
-    @reservations = Reservation.all
-    render :index
+    @restaurant = @reservation.restaurant
+    render :show
   end
 
   private def reservation_params
