@@ -33,7 +33,14 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'font-awesome-sass'
+# Figaro manages api keys.
 gem 'figaro'
+# Paperclip handles images.
+gem 'paperclip'
+# Amazon Web Services
+gem 'aws-sdk', '>= 2.0'
+
+
 
 group :production do
   gem 'rails_12factor'
