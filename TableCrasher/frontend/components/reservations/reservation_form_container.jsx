@@ -22,5 +22,6 @@ const mapDispatchToProps = dispatch => ({
   changeReservedStatus: (status) => dispatch(changeReservedStatus(status)),
   unmountReservations: () => dispatch(receiveReservations(null)),
   createReservation: reservation => dispatch(createReservation(reservation)),
+  receiveReservations: (reservations) => dispatch(receiveReservations(reservations)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ReservationForm);
