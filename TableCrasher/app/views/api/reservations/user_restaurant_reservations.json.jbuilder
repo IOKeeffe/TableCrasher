@@ -12,7 +12,7 @@
       json.restaurant do
         json.id restaurant.id
         json.name restaurant.name
-        json.image_url restaurant.image_url
+        json.partial! 'api/restaurants/images', restaurant: restaurant
         json.category restaurant.category
         json.price restaurant.price
       end

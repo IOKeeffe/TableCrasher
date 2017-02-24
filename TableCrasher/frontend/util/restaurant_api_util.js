@@ -27,6 +27,14 @@ export const searchRestaurants = (search_term) => {
   });
 };
 
+export const fetchRestaurantsByIds = (ids) => {
+  return $.ajax({
+    method: "GET",
+    url: "api/restaurants",
+    data: {ids},
+  });
+};
+
 export const updateRestaurant = (restaurant) => {
   return $.ajax({
     method: "PATCH",
