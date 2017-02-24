@@ -23,7 +23,7 @@ export default class ProfileFavorites extends React.Component{
 
 
   render() {
-    if(this.props.restaurants.length > 0)
+    if(this.props.restaurants.length > 0 && !this.props.fetching)
       return (
         <div className="profile-page">
           <Sidebar />
