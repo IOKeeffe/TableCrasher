@@ -66,7 +66,7 @@ end
 
 restaurants = []
 
-20.times do
+40.times do
   name = "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}"
   until Restaurant.find_by(name: name).nil? do
     name = "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}"

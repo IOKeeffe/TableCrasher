@@ -8,6 +8,34 @@
   width: 23% !important;
 }
 
+.sign-up-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: $source-sans;
+  font-weight: normal;
+  justify-content: center;
+
+  input {
+    border: 1px solid $light-grey;
+    border-radius: 2px;
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+.auth-button {
+  background-color: $red;
+  color: $white;
+  transition: .3s;
+
+  &:hover {
+    background-color: $red-hover;
+    transition: .3s;
+  }
+}
+
+
 .custom-modal .modal-content {
   border-radius: 0;
   box-shadow: none;
@@ -15,6 +43,15 @@
   flex-flow: column;
   justify-content: center;
 
+
+  ul {
+    margin-top: 20px;
+    list-style: none;
+
+    li {
+      color: $red-hover;
+    }
+  }
 
   .modal-header {
     border-bottom: 1px solid $light-grey;
@@ -31,41 +68,7 @@
     padding: 0 15px 15px 15px
   }
 
-  .sign-up-form {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-family: $source-sans;
-    font-weight: normal;
-    justify-content: center;
 
-    input {
-      border: 1px solid $light-grey;
-      border-radius: 2px;
-      padding: 10px;
-      width: 100%;
-    }
-  }
-
-  .auth-button {
-    background-color: $red;
-    color: $white;
-    transition: .3s;
-
-    &:hover {
-      background-color: $red-hover;
-      transition: .3s;
-    }
-  }
-
-  ul {
-    margin-top: 20px;
-    list-style: none;
-
-    li {
-      color: $red-hover;
-    }
-  }
 
   .auth-footer {
     align-self: flex-start;

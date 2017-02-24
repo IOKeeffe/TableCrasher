@@ -2,6 +2,7 @@ import React from 'react';
 import RestaurantItem from './restaurant_item';
 import {shuffle} from 'lodash';
 import {hashHistory} from 'react-router';
+import { loadingDiv } from '../../util/utils';
 
 export default class RestaurantIndex extends React.Component {
   constructor(props) {
@@ -32,7 +33,8 @@ export default class RestaurantIndex extends React.Component {
   render() {
     let cityName = this.props.currentCity ? this.props.currentCity.city.name : '';
 
-    return (
+    if(!this.props.fetching) {
+      return (
         <section className="restaurant-index">
           <section className="restaurant-index-header">
             <h2>{`${cityName} Restaurants`}</h2>
@@ -40,7 +42,10 @@ export default class RestaurantIndex extends React.Component {
           <ul className="restaurant-list">
             {this.renderRestaurantItems()}
           </ul>
-        </section>
-    );
+        </section>);
+    }
+    else {
+      return(loadingDiv());
+    }
   }
 }

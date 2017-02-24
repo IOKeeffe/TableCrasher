@@ -8,6 +8,7 @@ import RestaurantIndex from './restaurant_index';
 const mapStateToProps = state => {
   let restaurants = selectAllRestaurants(state);
   return {
+    fetching: state.reservations.fetching,
     restaurants: restaurants,
     favorites: state.favorites.favorites,
     currentUser: state.session.currentUser,

@@ -17,10 +17,10 @@ export default class Reviews extends React.Component {
     this.update = this.update.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
+    this.cancelReview = this.props.cancelReview.bind(this);
   }
 
   handleStarClick(nextState) {
-
     this.setState({rating: nextState});
   }
 
@@ -54,6 +54,7 @@ export default class Reviews extends React.Component {
         <div className="edit-form">
           <textarea value={this.state.body} onChange={this.update} />
           <input className="red-button" type="submit"/>
+          <button className="red-button" onClick={(e) => {this.cancelReview(e);}}>Cancel</button>
         </div>
       </form>
     );

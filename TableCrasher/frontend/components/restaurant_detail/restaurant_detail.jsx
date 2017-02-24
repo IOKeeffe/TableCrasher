@@ -2,6 +2,7 @@ import React from 'react';
 import RestaurantItem from '../restaurant/restaurant_item';
 import ReservationFormContainer from '../reservations/reservation_form_container';
 import ReviewsContainer from '../reviews/reviews_container';
+import { loadingDiv } from '../../util/utils';
 
 export default class RestaurantDetail extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class RestaurantDetail extends React.Component {
       return(<div><button className="red-button" onClick={this.toggleFavorite}>
         <i className="fa fa-heart-o" aria-hidden="true"></i>
         Add to favorites
-      </button></div>)
+      </button></div>);
     }
   }
 
@@ -79,9 +80,7 @@ export default class RestaurantDetail extends React.Component {
       );
     }
     else {
-      return (
-          <section>Loading...</section>
-      );
+      return(loadingDiv());
     }
   }
 }
