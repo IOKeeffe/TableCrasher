@@ -4,7 +4,7 @@ import { parseTime, parseDate, combineDateAndTime } from '../../util/utils';
 export default class ReservationForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {errorMessages: [], searchTerm: "", selected: "", date: new Date(), time: new Date(169200000), partySize: 1, detail: false};
+    this.state = {errorMessages: [], searchTerm: "", selected: "", date: new Date(), time: new Date(169200000), partySize: 1, detail: false, searching: false};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.changeFocus = this.changeFocus.bind(this);
   }
@@ -47,7 +47,7 @@ export default class ReservationForm extends React.Component {
   }
 
   renderSuccess() {
-    if( this.props.reservation_confirmed ) {
+    if( this.props.reservation_confirmed && !this.state.searching ) {
       let reservation = this.props.reservations.currentReservation;
       let confirmationString = `Reservation at ${reservation.restaurant_name} at ${parseTime(reservation.time_slot)} on ${parseDate(reservation.time_slot)} confirmed!`;
       return (<h2>{confirmationString}</h2>);
@@ -92,6 +92,7 @@ export default class ReservationForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({searching: true});
     if(!this.props.isSearchForm) {
       this.props.fetchOnlyReservations({
         party_size: this.state.partySize,

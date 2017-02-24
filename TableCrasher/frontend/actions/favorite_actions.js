@@ -1,4 +1,5 @@
 import * as FavoriteApiUtil from '../util/favorite_api_util';
+import { FETCHING_RESERVATIONS, fetching } from './reservation_actions';
 
 export const RECEIVE_FAVORITE = 'RECEIVE_FAVORITE';
 export const RECEIVE_FAVORITES = 'RECEIVE_FAVORITES';
@@ -11,7 +12,11 @@ export const fetchFavorite = id => dispatch => {
 };
 
 export const fetchFavorites = () => dispatch => {
-  return FavoriteApiUtil.fetchFavorites().then(favorites => {return dispatch(receiveFavorites(favorites))});
+  dispatch(fetching(true));
+  return FavoriteApiUtil.fetchFavorites().then(favorites => {
+    dispatch(fetching(false));
+    return dispatch(receiveFavorites(favorites));
+  });
 };
 
 export const deleteFavorite = id => dispatch => {
