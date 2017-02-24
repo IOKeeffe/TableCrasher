@@ -39,6 +39,9 @@ export default class ProfileReservations extends React.Component {
 
   render() {
     let reservations = this.props.reservations;
+    if(this.props.fetching) {
+      return (loadingDiv());
+    }
     if(reservations){
       if(reservations.length > 0) {
         return (
