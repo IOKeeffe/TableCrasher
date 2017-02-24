@@ -1,4 +1,5 @@
 import * as RestaurantApiUtil from '../util/restaurant_api_util';
+import { FETCHING_RESERVATIONS, fetching } from './reservation_actions';
 
 export const RECEIVE_RESTAURANTS = "RECEIVE_ALL_RESTAURANTS";
 export const RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
@@ -36,8 +37,11 @@ export const deleteRestaurant = id => dispatch => {
 };
 
 export const fetchRestaurantsByIds = (ids) => dispatch => {
+  dispatch(fetching(true));
   return RestaurantApiUtil.fetchRestaurantsByIds(ids)
-  .then(restaurants => dispatch(receiveRestaurants(restaurants)),
+  .then(restaurants => {
+    dispatch(fetching(false));
+    dispatch(receiveRestaurants(restaurants));},
         errors => {dispatch(receiveErrors(errors));});
 };
 

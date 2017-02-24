@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     favorites: selectAllFavorites(state),
     restaurants: selectAllRestaurants(state),
+    fetching: state.reservations.fetching,
   };
 };
 
