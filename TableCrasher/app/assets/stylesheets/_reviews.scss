@@ -30,17 +30,18 @@
   div {
     margin-left: 4px;
   }
-  .edit-form {
-    align-items: flex-end;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
 
-    textarea {
-      margin-right: 4px;
-    }
-  }
   .review {
     margin-bottom: 20px;
+  }
+}
+.edit-form {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  textarea {
+    margin-right: 4px;
   }
 }
