@@ -9,6 +9,7 @@ export default class Reviews extends React.Component {
     this.state = {creatingNewReview: false, editingReview: null, checkingDelete: null};
     this.setState = this.setState.bind(this);
     this.updateReview = this.updateReview.bind(this);
+    this.cancelReview  = this.cancelReview.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ export default class Reviews extends React.Component {
   renderNewReviewForm() {
     if(!this.state.creatingNewReview || this.props.currentPage === 'user') return;
     return (
-      <ReviewFormContainer restaurant={this.props.restaurant} currentUser={this.props.currentUser} editing={false}/>
+      <ReviewFormContainer restaurant={this.props.restaurant} cancelReview={this.cancelReview} currentUser={this.props.currentUser} editing={false}/>
     );
   }
 
@@ -49,6 +50,11 @@ export default class Reviews extends React.Component {
     else {
       return (<button className="red-button" onClick={(e) => {return this.setState({checkingDelete: review});}}>Delete Review</button>);
     }
+  }
+
+  cancelReview(e) {
+    e.preventDefault();
+    this.setState({creatingNewReview: false, editingReview: null, checkingDelete: null});
   }
 
 
@@ -72,7 +78,7 @@ export default class Reviews extends React.Component {
   }
 
   renderEditingReview(review) {
-    return (<ReviewFormContainer key={review.id} review={review} restaurant={this.props.restaurant} currentUser={this.props.currentUser} editing={true}/>);
+    return (<ReviewFormContainer key={review.id} review={review} cancelReview={this.cancelReview} restaurant={this.props.restaurant} currentUser={this.props.currentUser} editing={true}/>);
   }
 
   renderStaticReview(review) {

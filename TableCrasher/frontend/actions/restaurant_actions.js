@@ -35,6 +35,12 @@ export const deleteRestaurant = id => dispatch => {
         errors => {dispatch(receiveErrors(errors));});
 };
 
+export const fetchRestaurantsByIds = (ids) => dispatch => {
+  return RestaurantApiUtil.fetchRestaurantsByIds(ids)
+  .then(restaurants => dispatch(receiveRestaurants(restaurants)),
+        errors => {dispatch(receiveErrors(errors));});
+};
+
 export const searchRestaurants = search_term => dispatch => {
   return RestaurantApiUtil.searchRestaurants(search_term)
   .then(restaurants => {return dispatch(receiveRestaurants(restaurants));},

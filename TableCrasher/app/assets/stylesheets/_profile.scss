@@ -1,4 +1,17 @@
-.profile-page {
+.profile-sidebar {
+  position: fixed;
+  left: 8%;
+  top: 19%;
+
+  .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    padding: 43px 25px;
+  }
+}
+
+.profile-content {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -34,12 +47,16 @@
 
     .info {
       align-self:flex-start;
-      justify-content: flex-start;
+      justify-content: center;
+
       p {
         color: $black;
       }
       p :first-child {
         margin-bottom: 10px
+      }
+      p :last-child {
+        margin-bottom: 0;
       }
     }
 
@@ -72,9 +89,35 @@
     img {
       height: 100px;
       width: 150px;
+
+      margin-right: 25px;
+    }
+  }
+
+  .restaurant-item {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;;
+    margin-bottom: 25px;
+    padding: 25px;
+    width: 500px;
+
+    .info {
+      h2 {
+        margin: 10px 0;
+      }
+      align-items: flex-end;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
     }
   }
 }
+
+
+
 .details {
   label {
     width: 60%;
