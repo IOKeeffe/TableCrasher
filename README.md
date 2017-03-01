@@ -1,6 +1,6 @@
-# GoodBooks
+# Table Crasher
 
-<a href="http://table-crasher.heroku.com">GoodBooks</a>
+<a href="http://tablecrasher.co">Table Crasher</a>
 
 TableCrasher is a full-stack {db: 'Postgres', backEnd: 'Ruby on Rails', frontEnd: 'React/Redux'} web application inspired by OpenTable.
 
