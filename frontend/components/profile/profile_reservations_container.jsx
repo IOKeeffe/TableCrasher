@@ -6,7 +6,7 @@ import ProfileReservations from './profile_reservations';
 const mapStateToProps = (state, ownProps) => {
   return {
     fetching: state.reservations.fetching,
-    reservations: state.reservations.reservations,
+    reservations: selectUserReservations(state),
   };
 };
 

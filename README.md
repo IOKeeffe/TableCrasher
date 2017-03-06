@@ -23,12 +23,12 @@ Smaller restaurant info panes are available on the main page, search results, or
 
 Users can click through a restaurant info pane to get to a detail page. The detail page includes info about the restaurant as well as reviews, a gallery, and a reservation form to make a new reservation at that restaurant.
 
-![Detail Page](docs/wireframes/RestaurantDetails.png)
+![Detail Page](docs/MainPageScreenShot.png)
 
 ##Reservations
 Reservations represent the main functionality on the site. They are linked to a user_id and a restaurant_id, and store the table size and time slot. The reservation system makes the assumption that most parties will be finished eating in an hour, giving the restaurant 15 minutes to turn the table.
 
-When a user searches a reservation, the database is queried for the time available, as well as other nearby time slots. If the restaurant has enough seating to accomodate the party, the database returns the available reservations without persisting them until a user actually chooses one.
+When a user searches a reservation, the database is queried for the time available, as well as other nearby time slots. If the restaurant has enough seating to accommodate the party, the database returns the available reservations without persisting them until a user actually chooses one.
 
 Reservation searches can accommodate a search term to find a corresponding restaurant, or they can be for a single restaurant.
 

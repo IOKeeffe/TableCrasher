@@ -20,6 +20,9 @@ export default (oldState = {currentReservation: null, reservations: null, fetchi
   case FETCHING_RESERVATIONS:
     newState.fetching = action.fetchingVal;
     return newState;
+  case REMOVE_RESERVATION:
+    delete newState.reservations[action.reservation.restaurant_id];
+    return newState;
   default:
     return oldState;
   }

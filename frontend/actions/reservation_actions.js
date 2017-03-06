@@ -45,7 +45,7 @@ export const updateReservation = reservation => dispatch => {
 };
 
 export const deleteReservation = id => dispatch => {
-  return ReservationApiUtil.deleteReservation(id).then(reservation => dispatch(receiveReservation(reservation)));
+  return ReservationApiUtil.deleteReservation(id).then(reservation => dispatch(removeReservation(reservation)));
 };
 
 export const receiveReservation = reservation => {

@@ -1,6 +1,6 @@
 
-
-  json.array! @reservations do |reservation|
+@reservations.each do |reservation|
+    json.set! reservation.restaurant_id do
       json.reservation do
         json.party_size reservation.party_size
         json.time_slot reservation.time_slot
@@ -16,4 +16,5 @@
         json.category restaurant.category
         json.price restaurant.price
       end
+    end
   end
