@@ -14,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   else {
     store = configureStore();
   }
-  window.store = store;
-  window.fetchAllRestaurants = RestaurantActions.fetchAllRestaurants;
   const root = document.getElementById('root');
   ReactDOM.render( <Root store={store} />, root);
 });
