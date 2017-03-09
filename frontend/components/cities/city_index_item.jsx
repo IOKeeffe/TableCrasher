@@ -2,6 +2,7 @@ import React from 'react';
 
 export default ({city, fetchCityRestaurants}) => {
   const cityClick = (cityId) => {
+    window.scrollTo(0,0); 
     fetchCityRestaurants(cityId);
   };
 

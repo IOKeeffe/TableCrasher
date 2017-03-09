@@ -11,7 +11,16 @@ import ProfileFavoritesContainer from './profile/profile_favorites_container';
 
 import SearchResultsContainer from './reservations/search_results_container';
 
-const Root = ({store}) => (
+const Root = ({store}) => {
+
+  const userCheck = (nextState, replace) => {
+    if(!store.getState().session.currentUser) {
+      store.dispatch(receiveErrors({responseJSON: ["Please Sign In to continue."]}));
+      replace("/");
+    }
+  };
+
+  return (
     <Provider store={store}>
       <Router history = { hashHistory }>
         <Route path="/" component={ App }>
@@ -24,14 +33,10 @@ const Root = ({store}) => (
         </Route>
       </Router>
     </Provider>
-);
-
-const userCheck = (nextState, replace) => {
-  if(!store.getState().session.currentUser) {
-    store.dispatch(receiveErrors({responseJSON: ["Please Sign In to continue."]}));
-    replace("/");
-  }
+  );
 };
+
+
 
 
 export default Root;
