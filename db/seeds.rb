@@ -41,70 +41,97 @@ Restaurant.delete_all
 Reservation.delete_all
 Review.delete_all
 
-6.times do |i|
-    City.create(
-    name: Faker::GameOfThrones.city,
-    image: city_picture_urls[i],
-  )
-end
 
-20.times do
-  uname = Faker::GameOfThrones.character
-  until(uname.split.length == 2) do
-    uname = Faker::GameOfThrones.character
-  end
-  u = User.create(
-    username: uname.split(" ").join(""),
-    password: "starwars",
-    session_token: Faker::Crypto.md5,
-    city_id: City.all.sample.id,
-    f_name: uname.split(" ")[0],
-    l_name: uname.split(" ")[1],
-    email_address: "#{uname.split(" ").join("")}@#{Faker::GameOfThrones.house.split(" ").join("")}.com"
-  )
-end
+albany = City.create(
+  name: "Albany",
+  image: city_picture_urls[0],
+)
 
-restaurants = []
+brooklyn = City.create(
+  name: "Brooklyn",
+  image: city_picture_urls[1],
+)
 
-40.times do
-  name = "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}"
-  until Restaurant.find_by(name: name).nil? do
-    name = "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}"
-  end
-  cat = ["American", "Mexican", "Italian", "Indian", "Chinese", "French", "BBQ", "Vegetarian"].sample
-  article = cat[0].in?(["A","E","I","O","U"]) ? "An" : "A"
-  pic_url = restaurant_picture_urls.sample
-  owner = User.all.sample
-  restaurants.push(Restaurant.create(
-    name: "The #{Faker::Color.color_name.titleize} #{Faker::Food.ingredient.titleize}",
-    address: Faker::Address.street_address,
-    state: "New York",
-    zip_code: 11205,
-    category: cat,
-    city_id: City.all.sample.id,
-    opening_time: "11:00:00",
-    closing_time: "23:00:00",
-    seating: 20 + rand(31),
-    description: "#{article} #{cat} restaurant specializing in locavore fare, from head chef #{owner.f_name} #{owner.l_name}",
-    image: pic_url,
-    price: (1..4).to_a.sample,
-    owner_id: owner.id
-  ))
-end
+chicago = City.create(
+  name: "Chicago",
+  image: city_picture_urls[2],
+)
 
-restaurants.each do |restaurant|
-  8.times do
-    g = GalleryImage.create({image: food_picture_urls.sample, restaurant_id: restaurant.id})
-  end
-end
+los_angeles = City.create(
+  name: "Los Angeles",
+  image: city_picture_urls[3],
+)
 
+manhattan = City.create(
+  name: "Manhattan",
+  image: city_picture_urls[4],
+)
+
+orlando = City.create(
+  name: "Orlando",
+  image: city_picture_urls[5]
+)
+
+u = User.create(
+  username: "HungryJackie",
+  password: "starwars",
+  city_id: brooklyn.id,
+  f_name: "Jackie",
+  l_name: "Jambalaya",
+  email_address: "jackie@gmail.com"
+)
+
+u = User.create(
+  username: "BruncherBryan",
+  password: "starwars",
+  city_id: 2,
+  f_name: "Bryan",
+  l_name: "Burger",
+  email_address: "Bryan@gmail.com"
+)
+
+u = User.create(
+  username: "LunchtimeLana",
+  password: "starwars",
+  city_id: 3,
+  f_name: "Lana",
+  l_name: "Lemongrass",
+  email_address: "Lana@gmail.com"
+)
+
+u = User.create(
+  username: "SweettoothSam",
+  password: "starwars",
+  city_id: 4,
+  f_name: "Sam",
+  l_name: "Semolina",
+  email_address: "Sam@gmail.com"
+)
+
+u = User.create(
+  username: "SweettoothSam",
+  password: "starwars",
+  city_id: 5,
+  f_name: "Sam",
+  l_name: "Semolina",
+  email_address: "Sam@gmail.com"
+)
+
+u = User.create(
+  username: "BigBurgerBen",
+  password: "starwars",
+  city_id: 6,
+  f_name: "Ben",
+  l_name: "Burgerboy",
+  email_address: "Ben@gmail.com"
+)
 
 User.create(
   username: "guest",
   password: "starwars",
-  f_name: "Guest",
-  l_name: "Guest",
-  email_address: "guest@guest.com",
+  f_name: "Alton",
+  l_name: "Brown",
+  email_address: "Alton@foodnetwork.com",
   city_id: City.all.sample.id,
 )
 
@@ -117,18 +144,328 @@ username: "guy",
   city_id: City.all.sample.id,
 )
 
+restaurants = []
+
+restaurants.push(Restaurant.create(
+  name: "The Barnsider",
+  address: "480 Sand Creek Rd, Albany, NY",
+  state: "New York",
+  zip_code: "12205",
+  category: "Steakhouse",
+  city_id: albany.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Aged beef and fresh fish in a rustic environment with an open kitchen",
+  image: restaurant_picture_urls.sample,
+  price: 3,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "dp An American Brasserie",
+  address: "25 Chapel St, Albany, NY",
+  state: "New York",
+  zip_code: "12210",
+  category: "French/American",
+  city_id: albany.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Buzzy spot offering French classics, burgers & comfort bites, as well as an extensive wine list",
+  image: restaurant_picture_urls.sample,
+  price: 3,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Warehouse Grill & BBQ",
+  address: "219 Wolf Rd, Albany, NY",
+  state: "New York",
+  zip_code: "12205",
+  category: "BBQ",
+  city_id: albany.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "House-smoked BBQ in a refurbished warehouse",
+  image: restaurant_picture_urls.sample,
+  price: 1,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Calexico",
+  address: "645 Manhattan Ave, Brooklyn, NY 11222",
+  state: "New York",
+  zip_code: "11222",
+  category: "Mexican",
+  city_id: brooklyn.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Californian Mexican street food. Happy hours, cheap margaritas, amazing burritos",
+  image: restaurant_picture_urls.sample,
+  price: 1,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Peter Luger's",
+  address: "178 Broadway, Brooklyn, NY 11211",
+  state: "New York",
+  zip_code: "11211",
+  category: "Steakhouse",
+  city_id: brooklyn.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "World famous Michelin star steakhouse in Brooklyn",
+  image: restaurant_picture_urls.sample,
+  price: 4,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Emily",
+  address: "919 Fulton St, Brooklyn, NY",
+  state: "New York",
+  zip_code: "11238",
+  category: "Pizza",
+  city_id: brooklyn.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "This cozy, gourmet eatery serves wood-fired Neapolitan pizzas, rustic small plates & pastas",
+  image: restaurant_picture_urls.sample,
+  price: 4,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Alinea",
+  address: "1723 N Halsted St, Chicago, IL",
+  state: "Illinois",
+  zip_code: "60614",
+  category: "New American",
+  city_id: chicago.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Food is elevated to fine art at this 3-Michelin Star restaurant by Grant Achatz",
+  image: restaurant_picture_urls.sample,
+  price: 4,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Viaggio Ristorante & Lounge",
+  address: "1330 W Madison St, Chicago, IL",
+  state: "Illinois",
+  zip_code: "60607",
+  category: "Italian",
+  city_id: chicago.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Relaxed, stylish restaurant & bar near the United Center featuring upscale Italian-American cuisine",
+  image: restaurant_picture_urls.sample,
+  price: 4,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Next",
+  address: "953 W Fulton Market, Chicago, IL",
+  state: "Illinois",
+  zip_code: "60607",
+  category: "Eclectic",
+  city_id: chicago.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Rotating menu inspired by different locals and time periods",
+  image: restaurant_picture_urls.sample,
+  price: 4,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Real Food Daily",
+  address: "414 La Cienega Blvd, Los Angeles, CA",
+  state: "California",
+  zip_code: "90048",
+  category: "Vegetarian",
+  city_id: los_angeles.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Organic vegetarian & vegan cuisine in an understated space",
+  image: restaurant_picture_urls.sample,
+  price: 3,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Black Rabbit Rose",
+  address: "1719 N Hudson Ave, Los Angeles",
+  state: "California",
+  zip_code: "90028",
+  category: "Asian Fusion",
+  city_id: los_angeles.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Spice-filled Thai and Chinese classics",
+  image: restaurant_picture_urls.sample,
+  price: 3,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Scopa Italian Roots",
+  address: "2905 W Washington Blvd, Venice, CA",
+  state: "California",
+  zip_code: "90292",
+  category: "Italian",
+  city_id: los_angeles.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Roomy brick-walled gastropub dishing up hot & cold antipasti, pastas & other Italian specialties",
+  image: restaurant_picture_urls.sample,
+  price: 3,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Crooked Tree",
+  address: "110 Saint Marks Pl # 1, New York, NY",
+  state: "New York",
+  zip_code: "10009",
+  category: "French",
+  city_id: manhattan.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Crepes and sandwiches in an intimate setting",
+  image: restaurant_picture_urls.sample,
+  price: 2,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Eleven Madison Park",
+  address: "11 Madison Ave, New York, NY",
+  state: "New York",
+  zip_code: "10010",
+  category: "American",
+  city_id: manhattan.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Three Michelin Star restaurant featuring a seasonal tasting menu",
+  image: restaurant_picture_urls.sample,
+  price: 4,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Whitmans",
+  address: "406 E 9th St, New York, NY",
+  state: "New York",
+  zip_code: "10009",
+  category: "Hamburgers",
+  city_id: manhattan.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "This burger bar uses seasonal, local ingredients & is known for its pimiento-cheese-stuffed patty",
+  image: restaurant_picture_urls.sample,
+  price: 2,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Victoria and Albert's",
+  address: "4401 Floridian Way, Orlando, FL",
+  state: "Florida",
+  zip_code: "32830",
+  category: "New American",
+  city_id: orlando.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "High-end destination for fixed-price New American cuisine in Victorian-style environs",
+  image: restaurant_picture_urls.sample,
+  price: 4,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Raglan Road Irish Pub",
+  address: "1640 Buena Vista Dr, Orlando, FL",
+  state: "Florida",
+  zip_code: "32830",
+  category: "Irish",
+  city_id: orlando.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Hangout featuring modern Irish pub-fare classics plus live Celtic music & dancers.",
+  image: restaurant_picture_urls.sample,
+  price: 3,
+  owner_id: User.all.sample.id
+))
+
+restaurants.push(Restaurant.create(
+  name: "Artist Point",
+  address: "901 Timberline Dr, Orlando, FL",
+  state: "Florida",
+  zip_code: "32830",
+  category: "Northwest American",
+  city_id: orlando.id,
+  opening_time: "11:00:00",
+  closing_time: "23:00:00",
+  seating: 20 + rand(31),
+  description: "Rustic-chic dining room which serves seasonal Pacific NW fare & water views",
+  image: restaurant_picture_urls.sample,
+  price: 2,
+  owner_id: User.all.sample.id
+))
+
+restaurants.each do |restaurant|
+  8.times do
+    g = GalleryImage.create({image: food_picture_urls.sample, restaurant_id: restaurant.id})
+  end
+end
+
+reviews =
+[
+  ["This is an incredible restaurant, what a dining experience!", 5],
+  ["Besides some minor hiccups, it was a very nice meal.", 4],
+  ["I've had better, I've had worse. If you're in the area, maybe check it out.", 3],
+  ["It was ok, but VERY heavy. I think they could cut back on the grease.", 2],
+  ["Repulsive. Nasty. Disgusting. This is the worst meal I've ever had.", 1],
+  ["They were wonderful. This is my new favorite restaurant.", 5],
+  ["The only thing wrong was that I didn't get enough food. This was awesome though.", 4],
+  ["It's not the restaurant it used to be, but you can still see glimmers of how good it was.", 3],
+  ["The service was nice, but the food wasn't worth the price at all.", 2],
+  ["Friends don't let friends eat here.", 1],
+]
+
 40.times do
   user = User.all.sample.id
-  restaurant = Restaurant.all.sample.id
+  restaurant = Restaurant.all.sample
   review = Review.create(
-    body: Faker::Hipster.paragraph,
+    body: reviews.sample[0],
     user_id: user,
-    restaurant_id: restaurant,
-    rating: (1..5).to_a.sample,
+    restaurant_id: restaurant.id,
+    rating: reviews.sample[1],
   )
 end
 
-40.times do
+10.times do
   user = User.all.sample
   restaurant = Restaurant.all.sample
   Favorite.create(
