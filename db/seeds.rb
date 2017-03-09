@@ -72,7 +72,7 @@ orlando = City.create(
   image: city_picture_urls[5]
 )
 
-u = User.create(
+User.create(
   username: "HungryJackie",
   password: "starwars",
   city_id: brooklyn.id,
@@ -81,7 +81,7 @@ u = User.create(
   email_address: "jackie@gmail.com"
 )
 
-u = User.create(
+User.create(
   username: "BruncherBryan",
   password: "starwars",
   city_id: 2,
@@ -90,7 +90,7 @@ u = User.create(
   email_address: "Bryan@gmail.com"
 )
 
-u = User.create(
+User.create(
   username: "LunchtimeLana",
   password: "starwars",
   city_id: 3,
@@ -99,7 +99,7 @@ u = User.create(
   email_address: "Lana@gmail.com"
 )
 
-u = User.create(
+User.create(
   username: "SweettoothSam",
   password: "starwars",
   city_id: 4,
@@ -108,7 +108,7 @@ u = User.create(
   email_address: "Sam@gmail.com"
 )
 
-u = User.create(
+User.create(
   username: "SweettoothSam",
   password: "starwars",
   city_id: 5,
@@ -117,7 +117,7 @@ u = User.create(
   email_address: "Sam@gmail.com"
 )
 
-u = User.create(
+User.create(
   username: "BigBurgerBen",
   password: "starwars",
   city_id: 6,
@@ -126,7 +126,7 @@ u = User.create(
   email_address: "Ben@gmail.com"
 )
 
-User.create(
+guest = User.create(
   username: "guest",
   password: "starwars",
   f_name: "Alton",
@@ -473,3 +473,22 @@ end
     restaurant_id: restaurant.id
   )
 end
+
+Reservation.create(
+  party_size: (2..6).to_a.sample,
+  time_slot: Time.now + (2*7*24*60*60) + (rand*60*60*24*3),
+  user_id: guest.id,
+  restaurant_id: Restaurant.all.sample.id
+)
+Reservation.create(
+  party_size: (2..6).to_a.sample,
+  time_slot: Time.now + (2*7*24*60*60) + (rand*60*60*24*3),
+  user_id: guest.id,
+  restaurant_id: Restaurant.all.sample.id
+)
+Reservation.create(
+  party_size: (2..6).to_a.sample,
+  time_slot: Time.now + (2*7*24*60*60) + (rand*60*60*24*3),
+  user_id: guest.id,
+  restaurant_id: Restaurant.all.sample.id
+)
