@@ -6,7 +6,7 @@ export default class ProfileDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.user;
-    this.setState({updated: false});
+    this.state.updated = false;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
