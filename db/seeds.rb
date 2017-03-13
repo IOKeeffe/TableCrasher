@@ -456,12 +456,13 @@ reviews =
 
 40.times do
   user = User.all.sample.id
+  review = reviews.sample
   restaurant = Restaurant.all.sample
-  review = Review.create(
-    body: reviews.sample[0],
+  Review.create(
+    body: review[0],
     user_id: user,
     restaurant_id: restaurant.id,
-    rating: reviews.sample[1],
+    rating: review[1],
   )
 end
 
