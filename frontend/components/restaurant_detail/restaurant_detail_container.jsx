@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import RestaurantDetail from './restaurant_detail';
 import { fetchRestaurant, receiveRestaurant } from '../../actions/restaurant_actions';
 import { fetchFavorites, createFavorite, deleteFavorite } from '../../actions/favorite_actions';
-import { receiveReservations } from '../../actions/reservation_actions';
+import { receiveReservations, receiveReservation } from '../../actions/reservation_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchRestaurant: (id) => dispatch(fetchRestaurant(id)),
-  unmountRestaurant: () => dispatch(receiveRestaurant(null)),
+  unmountRestaurant: () => {dispatch(receiveRestaurant(null));
+    dispatch(receiveReservation(null));},
   fetchFavorites: () => dispatch(fetchFavorites()),
   createFavorite: (favorite) => dispatch(createFavorite(favorite)),
   deleteFavorite: (id) => dispatch(deleteFavorite(id)),

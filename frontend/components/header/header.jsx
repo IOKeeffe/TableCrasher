@@ -55,7 +55,7 @@ class Header extends React.Component {
         <div className="auth-section">
         <h3>Hi, {this.props.currentUser.f_name}</h3>
         <a onClick={this.logOut} className="log">Log Out</a>
-        <Link className="log" to={'profile/reservations'}>My Profile</Link>
+        <Link className="log" to={'profile/details'}>My Profile</Link>
         </div>
       );
     }
