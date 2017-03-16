@@ -89,6 +89,7 @@ export default class Reviews extends React.Component {
           <StarRatingComponent
           name={`rating-${review.id}`}
           starCount={5}
+          editing={false}
           value={review.rating}
           />
         </div>
