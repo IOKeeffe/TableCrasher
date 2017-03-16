@@ -29,7 +29,6 @@
       width: 33.333%;
 
       img {
-        height: 100%;
         object-fit: cover;
         width: 100%;
       }
@@ -58,7 +57,12 @@
       }
     }
     .restaurant-gallery-item {
-      width: 25%;
+      margin: 1px;
+      width: 24%;
+
+      img {
+        cursor: default;
+      }
     }
   }
 }

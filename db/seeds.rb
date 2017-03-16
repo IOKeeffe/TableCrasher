@@ -5,12 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-city_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/city_images/141001144835-innovative-cities-philly-1024x576.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/city_images/201411-a-americas-favorite-cities-new-york.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/city_images/1680856-poster-1280-10-smartest-european-cities-shutterstock-78340003-1.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/city_images/cities.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/city_images/tokyo.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/city_images/chicago-1.jpg"]
+city_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/city_images/Albany.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/Brooklyn.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/Chicago.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/LA.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/Manhattan.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/city_images/Orlando.jpg"]
 
 restaurant_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/scandic-sundsvall-city-restaurant-verket-10.jpg",
   "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant-c-michiel-van-der-eerde-amsterdam-2.jpg",
@@ -24,16 +24,25 @@ restaurant_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/restauran
   "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant_2.jpg",
   "https://s3.amazonaws.com/table-crasher-pro/restaurant_Images/restaurant.jpg"]
 
-food_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/food_images/so24.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/st07.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/restaurant-offerings-cta.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/pizza-junk-food-600.jpg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/download_1.jpeg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/download_3.jpeg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/images.jpeg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/download.jpeg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/download_2.jpeg",
-  "https://s3.amazonaws.com/table-crasher-pro/food_images/download_4.jpeg"]
+food_picture_urls = ["https://s3.amazonaws.com/table-crasher-pro/food_images/food1.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food2.jpg",
+  # "https://s3.amazonaws.com/table-crasher-pro/food_images/food3.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food4.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food5.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food6.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food7.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food8.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food9.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food10.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food11.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food12.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food13.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food14.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food15.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food16.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food17.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food18.jpg",
+  "https://s3.amazonaws.com/table-crasher-pro/food_images/food19.jpg"]
 
 User.delete_all
 City.delete_all
@@ -434,9 +443,13 @@ restaurants.push(Restaurant.create(
   owner_id: User.all.sample.id
 ))
 
+
+
 restaurants.each do |restaurant|
+  pix = food_picture_urls.dup
   8.times do
-    g = GalleryImage.create({image: food_picture_urls.sample, restaurant_id: restaurant.id})
+    pic = pix.delete(pix.sample)
+    g = GalleryImage.create({image: pic, restaurant_id: restaurant.id})
   end
 end
 
@@ -456,39 +469,32 @@ reviews =
 
 40.times do
   user = User.all.sample.id
+  review = reviews.sample
   restaurant = Restaurant.all.sample
-  review = Review.create(
-    body: reviews.sample[0],
+  Review.create(
+    body: review[0],
     user_id: user,
     restaurant_id: restaurant.id,
-    rating: reviews.sample[1],
+    rating: review[1],
   )
 end
 
-10.times do
-  user = User.all.sample
-  restaurant = Restaurant.all.sample
+restaurant_ids = Restaurant.all.map do |restaurant|
+  restaurant.id
+end
+
+4.times do
   Favorite.create(
-    user_id: user.id,
-    restaurant_id: restaurant.id
+    user_id: guest.id,
+    restaurant_id: restaurant_ids.delete(restaurant_ids.sample)
   )
 end
 
-Reservation.create(
-  party_size: (2..6).to_a.sample,
-  time_slot: Time.now + (2*7*24*60*60) + (rand*60*60*24*3),
-  user_id: guest.id,
-  restaurant_id: Restaurant.all.sample.id
-)
-Reservation.create(
-  party_size: (2..6).to_a.sample,
-  time_slot: Time.now + (2*7*24*60*60) + (rand*60*60*24*3),
-  user_id: guest.id,
-  restaurant_id: Restaurant.all.sample.id
-)
-Reservation.create(
-  party_size: (2..6).to_a.sample,
-  time_slot: Time.now + (2*7*24*60*60) + (rand*60*60*24*3),
-  user_id: guest.id,
-  restaurant_id: Restaurant.all.sample.id
-)
+4.times do
+  Reservation.create(
+    party_size: (2..6).to_a.sample,
+    time_slot: Time.now + (2*7*24*60*60) + (rand*60*60*24*3),
+    user_id: guest.id,
+    restaurant_id: Restaurant.all.sample.id
+  )
+end
