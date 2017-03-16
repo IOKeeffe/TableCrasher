@@ -10,11 +10,18 @@ export default class RestaurantIndex extends React.Component {
     this.redirect = this.redirect.bind(this);
   }
 
+  componentWillMount() {
+  }
+
   componentDidMount() {
     this.props.fetchAllRestaurants();
     if(this.props.currentUser) {
       this.props.fetchFavorites();
     }
+  }
+
+  componentWillUnmount() {
+    this.props.removeCity();
   }
 
   redirect(id) {
