@@ -389,7 +389,7 @@ restaurants.push(Restaurant.create(
   opening_time: "11:00:00",
   closing_time: "23:00:00",
   seating: 20 + rand(31),
-  description: "This burger bar uses seasonal, local ingredients & is known for its pimiento-cheese-stuffed patty",
+  description: "This burger bar uses seasonal, local ingredients & is known for its pimento-cheese-stuffed patty",
   image: restaurant_picture_urls.sample,
   price: 2,
   owner_id: User.all.sample.id
