@@ -68,7 +68,8 @@ export default class ReservationForm extends React.Component {
       let changeReservedStatus=this.props.changeReservedStatus;
       this.props.createReservation(new_reservation).then((success) => {
         changeReservedStatus(true);
-        if(this.props.isSearchForm) hashHistory.push("/");
+        // if(this.props.isSearchForm) hashHistory.push("/");
+        hashHistory.push("/");
       });
     };
   }

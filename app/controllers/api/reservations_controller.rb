@@ -2,7 +2,6 @@ class Api::ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    debugger
     @reservation.user_id = current_user.id
     @restaurant = Restaurant.find(@reservation.restaurant_id)
     if @reservation.save
