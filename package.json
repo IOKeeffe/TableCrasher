@@ -33,10 +33,18 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "./node_modules/.bin/webpack -w",
+    "webpack": "webpack -w",
     "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iokeeffe/TableCrasher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iokeeffe/TableCrasher/issues"
+  },
+  "homepage": "https://github.com/iokeeffe/TableCrasher#readme"
 }
