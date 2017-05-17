@@ -28,7 +28,7 @@ export default class ProfileFavorites extends React.Component{
         <div className="profile-page">
           <Sidebar />
           <ul className="profile-content">
-          <h2 className="">Favorite Restaurants</h2>
+          <h2 className="">My Favorite Restaurants</h2>
             {this.props.restaurants.map ((restaurant) => {
               return (
                 <Link to={`restaurants/${restaurant.id}`} key={restaurant.id}>
