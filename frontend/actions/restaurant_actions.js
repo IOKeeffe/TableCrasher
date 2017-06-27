@@ -4,6 +4,7 @@ import { FETCHING_RESERVATIONS, fetching } from './reservation_actions';
 export const RECEIVE_RESTAURANTS = "RECEIVE_ALL_RESTAURANTS";
 export const RECEIVE_RESTAURANT = "RECEIVE_RESTAURANT";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const REMOVE_ERRORS = "REMOVE_ERRORS";
 export const REMOVE_RESTAURANT = "REMOVE_RESTAURANT";
 
 export const fetchAllRestaurants = () => dispatch => {
@@ -69,5 +70,10 @@ export const removeRestaurant = (restaurant) => ({
 
 export const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
+  errors,
+});
+
+export const removeErrors = (errors) => ({
+  type: REMOVE_ERRORS,
   errors,
 });
