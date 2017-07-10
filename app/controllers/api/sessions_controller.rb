@@ -14,7 +14,7 @@ class Api::SessionsController < ApplicationController
       log_out
       render(json: {})
     else
-      render(json: ["Not logged in."], status: 404 )
+      render(json: ["Please Log In."], status: 404 )
     end
   end
   def user_params
